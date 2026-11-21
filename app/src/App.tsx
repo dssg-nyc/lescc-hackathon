@@ -1,6 +1,11 @@
-import { useEffect, useMemo } from "react";
-import { CHAPTERS, SITE } from "./story/config";
-import { useChapterHash } from "./story/useChapterHash";
+import { useCallback, useEffect, useRef, useState, type CSSProperties } from "react";
+import { Caveat } from "./components/Caveat";
+import { SourceSheet } from "./components/SourceSheet";
+import { StoryShell } from "./components/StoryShell";
+import { useAutoplay } from "./hooks/useAutoplay";
+import { CARDS, SITE } from "./story/config";
+import { autoplayDelay } from "./story/motion";
+import { useCardHash } from "./story/useCardHash";
 import "./styles/tokens.css";
 import "./App.css";
 
@@ -15,19 +20,46 @@ function InstagramIcon() {
 }
 
 function App() {
-  const ids = useMemo(() => CHAPTERS.map((chapter) => chapter.id), []);
-  const [index, go] = useChapterHash(ids);
-  const chapter = CHAPTERS[index];
-  const last = CHAPTERS.length - 1;
+  const [index, go] = useCardHash(CARDS);
+  const card = CARDS[index];
+  const last = CARDS.length - 1;
+  const [playing, setPlaying] = useState(true);
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const headingRef = useRef<HTMLHeadingElement>(null);
+  const firstRender = useRef(true);
 
+  const delayMs = autoplayDelay(card.dataFile !== null);
+  const next = useCallback(() => go(index + 1), [go, index]);
+
+  useAutoplay({
+    enabled: playing && !sheetOpen && !card.waitsForInput && index < last,
+    delayMs,
+    cardKey: card.id,
+    onAdvance: next,
+  });
+
+  // Move focus to the new card heading so screen readers announce it.
   useEffect(() => {
-    const onKey = (event: KeyboardEvent) => {
-      if (event.key === "ArrowRight") go(index + 1);
-      if (event.key === "ArrowLeft") go(index - 1);
-    };
-    window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
-  }, [index, go]);
+    if (firstRender.current) {
+      firstRender.current = false;
+      return;
+    }
+    headingRef.current?.focus({ preventScroll: true });
+  }, [card.id]);
+
+  // Manual navigation pauses autoplay, like the reference.
+  const goManual = useCallback(
+    (target: number) => {
+      setPlaying(false);
+      go(target);
+    },
+    [go],
+  );
+
+  const close = () => {
+    setPlaying(false);
+    go(0);
+  };
 
   return (
     <div className="page">
@@ -88,58 +120,38 @@ function App() {
         </div>
       </header>
 
-      <main className="story">
-        <header className="story-header">
-          <p className="eyebrow">The story</p>
-          <h1 className="story-title">Two futures for one corner</h1>
-          <p className="address">{SITE.address}</p>
-        </header>
-
-        <nav className="progress" aria-label="Chapters">
-          {CHAPTERS.map((item, i) => (
-            <button
-              key={item.id}
-              type="button"
-              className={i <= index ? "progress-segment is-on" : "progress-segment"}
-              aria-label={`Go to ${item.title}`}
-              aria-current={i === index ? "step" : undefined}
-              onClick={() => go(i)}
-            />
-          ))}
-        </nav>
-
-        <article
-          key={chapter.id}
-          id={chapter.id}
-          className="card"
-          aria-labelledby={`${chapter.id}-title`}
+      <main className="story" style={{ "--dur-autoplay": `${delayMs}ms` } as CSSProperties}>
+        <StoryShell
+          cards={CARDS}
+          index={index}
+          go={goManual}
+          playing={playing && !card.waitsForInput}
+          onTogglePlay={() => setPlaying((p) => !p)}
+          onInfo={() => setSheetOpen(true)}
+          onClose={close}
         >
-          <p className="chapter-index">
-            {String(index + 1).padStart(2, "0")} / {String(CHAPTERS.length).padStart(2, "0")}
-          </p>
-          <h2 id={`${chapter.id}-title`}>{chapter.title}</h2>
-          <p className="headline">{chapter.headline}</p>
-          <p className="caveat">{chapter.caveat}</p>
-        </article>
+          <article
+            key={card.id}
+            id={card.id}
+            className="card"
+            data-tone={card.tone}
+            aria-labelledby={`${card.id}-title`}
+          >
+            {card.id === "intro" && <p className="caveat">{SITE.address}</p>}
+            <h1 id={`${card.id}-title`} className="card-headline" ref={headingRef} tabIndex={-1}>
+              {card.headline}
+            </h1>
+            <Caveat text={card.caveat} onSources={() => setSheetOpen(true)} />
+          </article>
+        </StoryShell>
 
-        <div className="controls">
-          <button
-            type="button"
-            className="btn btn-ghost"
-            onClick={() => go(index - 1)}
-            disabled={index === 0}
-          >
-            Previous
-          </button>
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={() => go(index + 1)}
-            disabled={index === last}
-          >
-            Next
-          </button>
-        </div>
+        <SourceSheet
+          open={sheetOpen}
+          title={card.label}
+          caveat={card.caveat}
+          dataFile={card.dataFile}
+          onClose={() => setSheetOpen(false)}
+        />
       </main>
     </div>
   );

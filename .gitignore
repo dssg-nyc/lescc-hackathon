@@ -4,3 +4,4 @@ motion.mov
 *.mp4
 .vercel
 
+app/coverage/

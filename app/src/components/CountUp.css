@@ -1,0 +1,7 @@
+.countup { font-variant-numeric: tabular-nums; font-weight: var(--font-weight-black); }
+.countup-awaiting { font-size: var(--text-base); font-weight: var(--font-weight-bold); color: var(--muted); }
+.countup-visual { display: inline-flex; line-height: 1; }
+.countup-col { display: inline-block; height: 1em; overflow: hidden; }
+.countup-reel { display: flex; flex-direction: column; transition: transform var(--dur-ui) var(--ease-story); }
+.countup-reel > span { height: 1em; }
+@media (prefers-reduced-motion: reduce) { .countup-reel { transition: none; } }
