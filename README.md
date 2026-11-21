@@ -98,4 +98,14 @@ Model logic:
 
 ## Setup
 
-Not yet built. Setup steps will be added once the model and app are scaffolded.
+### Storytelling app
+
+```bash
+cd app
+npm install
+npm run dev
+```
+
+### Vercel
+
+The repo-root `vercel.json` builds the Vite app in `app/` and publishes `app/dist`. Import this GitHub repository in Vercel and leave **Root Directory** as the repo root. No environment variables are required.
