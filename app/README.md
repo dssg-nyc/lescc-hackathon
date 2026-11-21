@@ -1,3 +1,16 @@
+# Storytelling app
+
+Vite + React + TypeScript. Local:
+
+```bash
+npm install
+npm run dev
+```
+
+Production build: `npm run build`. Vercel is configured from the **repository root** (`vercel.json`), not this folder — import the GitHub repo and leave Root Directory at `.`.
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
