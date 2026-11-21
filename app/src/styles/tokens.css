@@ -1,5 +1,30 @@
-/* Design tokens taken from lesculturalcenter.org's stylesheet (Tailwind v4 build).
-   Keep in sync with the LESCC site. Do not hardcode these values elsewhere. */
+/* Design tokens from lesculturalcenter.org (Tailwind v4 build, 2026-11-21).
+   Brand green is the accent used on that site. Red exists in their palette
+   but is not used for headings or CTAs — do not use it as the story accent. */
+
+@font-face {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/lato-400-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/lato-700-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url("/fonts/lato-900-latin.woff2") format("woff2");
+}
 
 :root {
   --color-black: #000;
@@ -16,29 +41,60 @@
   --color-red-400: #ff6568;
   --color-red-600: #e40014;
   --color-green-600: #068e4a;
+  --color-green-700: #057a3f;
 
   --bg: var(--color-white);
   --fg: #171717;
   --muted: var(--color-zinc-500);
-  --accent: var(--color-red-600);
-  --accent-soft: var(--color-red-400);
-  --positive: var(--color-green-600);
+  --nav: var(--color-zinc-600);
+  --nav-hover: var(--color-zinc-950);
+  --accent: var(--color-green-600);
+  --accent-hover: var(--color-green-700);
+  --accent-soft: #e8f6ee;
+  --on-accent: var(--color-white);
   --surface: var(--color-zinc-100);
-  --border: var(--color-zinc-200);
+  --border: rgb(0 0 0 / 0.08);
+  --hover-wash: rgb(0 0 0 / 0.04);
 
   /* Semantic colors for the story. Baseline and proposal must never share a hue. */
   --color-baseline: var(--color-zinc-500);
   --color-proposal: var(--accent);
 
-  --font-sans: "Lato", "Lato Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --font-sans: "Lato", Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    "Courier New", monospace;
+
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-weight-black: 900;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+
+  --tracking-tight: -0.025em;
+  --tracking-wide: 0.025em;
 
   --radius: 0.5rem;
-  --gutter: 16px;
+  --radius-full: 9999px;
+  --gutter: 1rem;
+  --gutter-lg: 0.5in;
   --max-width: 80rem;
+  --header-border: var(--border);
 
   --duration-fast: 150ms;
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (min-width: 640px) {
+  :root {
+    --gutter: var(--gutter-lg);
+  }
 }
 
 @media (prefers-color-scheme: dark) {
@@ -46,8 +102,12 @@
     --bg: #0a0a0a;
     --fg: #ededed;
     --muted: var(--color-zinc-400);
+    --nav: var(--color-zinc-400);
+    --nav-hover: var(--color-zinc-50);
     --surface: var(--color-zinc-900);
-    --border: var(--color-zinc-800);
+    --border: rgb(255 255 255 / 0.145);
+    --hover-wash: rgb(255 255 255 / 0.06);
+    --header-border: rgb(255 255 255 / 0.145);
   }
 }
 
@@ -55,6 +115,10 @@
   --bg: #0a0a0a;
   --fg: #ededed;
   --muted: var(--color-zinc-400);
+  --nav: var(--color-zinc-400);
+  --nav-hover: var(--color-zinc-50);
   --surface: var(--color-zinc-900);
-  --border: var(--color-zinc-800);
+  --border: rgb(255 255 255 / 0.145);
+  --hover-wash: rgb(255 255 255 / 0.06);
+  --header-border: rgb(255 255 255 / 0.145);
 }
