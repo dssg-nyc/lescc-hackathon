@@ -5,3 +5,4 @@ motion.mov
 .vercel
 
 app/coverage/
+.venv/

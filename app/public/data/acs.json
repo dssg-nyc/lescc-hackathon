@@ -1,0 +1,43 @@
+{
+  "generated": "2026-11-21",
+  "status": "ok",
+  "caveat": "ACS 2024 5-year estimates for ZCTA 10002. Race and Hispanic origin are self-reported; groups do not overlap. Estimates carry margins of error.",
+  "sources": [
+    {
+      "name": "U.S. Census Bureau, ACS 2024 5-year, table B03002 (via Census Reporter)",
+      "url": "https://censusreporter.org/profiles/86000US10002/",
+      "pulled": "2026-11-21"
+    }
+  ],
+  "geography": "ZCTA 10002",
+  "release": "ACS 2024 5-year",
+  "population": 76873,
+  "median_household_income": 48386.0,
+  "groups": [
+    {
+      "label": "Asian",
+      "count": 27793,
+      "share": 0.362
+    },
+    {
+      "label": "White",
+      "count": 20819,
+      "share": 0.271
+    },
+    {
+      "label": "Hispanic or Latino",
+      "count": 18319,
+      "share": 0.238
+    },
+    {
+      "label": "Black",
+      "count": 6517,
+      "share": 0.085
+    },
+    {
+      "label": "Other or multiracial",
+      "count": 3425,
+      "share": 0.045
+    }
+  ]
+}

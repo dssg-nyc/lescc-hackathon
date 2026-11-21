@@ -1,0 +1,203 @@
+{
+ "pulled": "2026-11-21",
+ "url": "https://api.censusreporter.org/1.0/data/show/latest",
+ "params": {
+  "table_ids": "B01003,B19013,B03002",
+  "geo_ids": "86000US10002"
+ },
+ "data": {
+  "data": {
+   "86000US10002": {
+    "B01003": {
+     "error": {
+      "B01003001": 3494.0
+     },
+     "estimate": {
+      "B01003001": 76873.0
+     }
+    },
+    "B03002": {
+     "error": {
+      "B03002001": 3494.0,
+      "B03002002": 3126.0,
+      "B03002003": 1697.0,
+      "B03002004": 1170.0,
+      "B03002005": 35.0,
+      "B03002006": 2275.0,
+      "B03002007": 89.0,
+      "B03002008": 561.0,
+      "B03002009": 590.0,
+      "B03002010": 315.0,
+      "B03002011": 484.0,
+      "B03002012": 1935.0,
+      "B03002013": 691.0,
+      "B03002014": 184.0,
+      "B03002015": 158.0,
+      "B03002016": 64.0,
+      "B03002017": 32.0,
+      "B03002018": 1369.0,
+      "B03002019": 1696.0,
+      "B03002020": 1692.0,
+      "B03002021": 497.0
+     },
+     "estimate": {
+      "B03002001": 76873.0,
+      "B03002002": 58554.0,
+      "B03002003": 20819.0,
+      "B03002004": 6517.0,
+      "B03002005": 30.0,
+      "B03002006": 27793.0,
+      "B03002007": 53.0,
+      "B03002008": 943.0,
+      "B03002009": 2399.0,
+      "B03002010": 701.0,
+      "B03002011": 1698.0,
+      "B03002012": 18319.0,
+      "B03002013": 1941.0,
+      "B03002014": 465.0,
+      "B03002015": 204.0,
+      "B03002016": 61.0,
+      "B03002017": 0.0,
+      "B03002018": 9029.0,
+      "B03002019": 6619.0,
+      "B03002020": 5467.0,
+      "B03002021": 1152.0
+     }
+    },
+    "B19013": {
+     "error": {
+      "B19013001": 4836.0
+     },
+     "estimate": {
+      "B19013001": 48386.0
+     }
+    }
+   }
+  },
+  "geography": {
+   "86000US10002": {
+    "name": "10002"
+   }
+  },
+  "release": {
+   "id": "acs2024_5yr",
+   "name": "ACS 2024 5-year",
+   "years": "2020-2024"
+  },
+  "tables": {
+   "B01003": {
+    "columns": {
+     "B01003001": {
+      "indent": 0,
+      "name": "Total"
+     }
+    },
+    "denominator_column_id": null,
+    "title": "Total Population",
+    "universe": "Total population"
+   },
+   "B03002": {
+    "columns": {
+     "B03002001": {
+      "indent": 0,
+      "name": "Total:"
+     },
+     "B03002002": {
+      "indent": 1,
+      "name": "Not Hispanic or Latino:"
+     },
+     "B03002003": {
+      "indent": 2,
+      "name": "White alone"
+     },
+     "B03002004": {
+      "indent": 2,
+      "name": "Black or African American alone"
+     },
+     "B03002005": {
+      "indent": 2,
+      "name": "American Indian and Alaska Native alone"
+     },
+     "B03002006": {
+      "indent": 2,
+      "name": "Asian alone"
+     },
+     "B03002007": {
+      "indent": 2,
+      "name": "Native Hawaiian and Other Pacific Islander alone"
+     },
+     "B03002008": {
+      "indent": 2,
+      "name": "Some other race alone"
+     },
+     "B03002009": {
+      "indent": 2,
+      "name": "Two or more races:"
+     },
+     "B03002010": {
+      "indent": 3,
+      "name": "Two races including Some other race"
+     },
+     "B03002011": {
+      "indent": 3,
+      "name": "Two races excluding Some other race, and three or more races"
+     },
+     "B03002012": {
+      "indent": 1,
+      "name": "Hispanic or Latino:"
+     },
+     "B03002013": {
+      "indent": 2,
+      "name": "White alone"
+     },
+     "B03002014": {
+      "indent": 2,
+      "name": "Black or African American alone"
+     },
+     "B03002015": {
+      "indent": 2,
+      "name": "American Indian and Alaska Native alone"
+     },
+     "B03002016": {
+      "indent": 2,
+      "name": "Asian alone"
+     },
+     "B03002017": {
+      "indent": 2,
+      "name": "Native Hawaiian and Other Pacific Islander alone"
+     },
+     "B03002018": {
+      "indent": 2,
+      "name": "Some other race alone"
+     },
+     "B03002019": {
+      "indent": 2,
+      "name": "Two or more races:"
+     },
+     "B03002020": {
+      "indent": 3,
+      "name": "Two races including Some other race"
+     },
+     "B03002021": {
+      "indent": 3,
+      "name": "Two races excluding Some other race, and three or more races"
+     }
+    },
+    "denominator_column_id": "B03002001",
+    "title": "Hispanic or Latino Origin by Race",
+    "universe": "Total population"
+   },
+   "B19013": {
+    "columns": {
+     "B19013001": {
+      "indent": 0,
+      "name": "Median household income in the past 12 months (in 2024 inflation-adjusted dollars)"
+     }
+    },
+    "denominator_column_id": null,
+    "title": "Median Household Income in the Past 12 Months (In 2024 Inflation-adjusted Dollars)",
+    "universe": "Households"
+   }
+  }
+ }
+}

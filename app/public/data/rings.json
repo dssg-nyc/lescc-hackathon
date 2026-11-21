@@ -1,0 +1,55 @@
+{
+  "generated": "2026-11-21",
+  "status": "partial",
+  "caveat": "Tracts crossing a ring are weighted by their share of Census blocks inside it. Ring income is a population-weighted mean of tract medians, not a true median. Trend uses overlapping 5-year windows.",
+  "sources": [
+    {
+      "name": "U.S. Census Bureau, ACS 2024 5-year, B01003 and B19013 (via Census Reporter)",
+      "url": "https://censusreporter.org",
+      "pulled": "2026-11-21"
+    },
+    {
+      "name": "Census LEHD LODES 8 block crosswalk and WAC",
+      "url": "https://lehd.ces.census.gov/data/",
+      "pulled": "2026-11-21"
+    }
+  ],
+  "release": "ACS 2024 5-year",
+  "rings": [
+    {
+      "miles": 0.5,
+      "population": 69971,
+      "median_income_est": 81153,
+      "tracts": 23,
+      "jobs": {
+        "total": 63590,
+        "arts": 1511,
+        "food": 13035
+      }
+    },
+    {
+      "miles": 1.0,
+      "population": 213274,
+      "median_income_est": 102909,
+      "tracts": 53,
+      "jobs": {
+        "total": 264397,
+        "arts": 4826,
+        "food": 32996
+      }
+    },
+    {
+      "miles": 2.0,
+      "population": 450549,
+      "median_income_est": 137929,
+      "tracts": 93,
+      "jobs": {
+        "total": 969184,
+        "arts": 22888,
+        "food": 89896
+      }
+    }
+  ],
+  "income_trend": null,
+  "projection": null
+}

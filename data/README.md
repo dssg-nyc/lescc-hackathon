@@ -73,3 +73,21 @@ Parks' published financials for the Hunter's Point South Café and McCarren Park
 - Record the Socrata ID and pull date for each source once located.
 - Confirm the Allen Street Mall `park_id` in the DPR parks feed.
 - Decide where raw downloads are stored. Files in `data/raw/` stay unedited, per the project README.
+
+## 7. Sources wired into the story build (2026-11-21)
+
+`scripts/build_data.py` reads these and writes `app/public/data/*.json`. Public API pulls are saved as dated snapshots in `data/external/` so builds are reproducible (`--refresh` re-pulls).
+
+| Card | Source | Location | Notes |
+|---|---|---|---|
+| Site | NYC Planning Labs GeoSearch | API | 76 Delancey St = 40.719552, -73.990207, BBL 1004150150 |
+| `#crowd` | NYC DOT Bi-Annual Pedestrian Counts | `Bi-Annual_Pedestrian_Counts_20261121.csv` | Station 40, Delancey St between Orchard and Ludlow, 0.06 mi from the site. May 2007 to Sept 2026, AM / midday / PM count periods. Some years store counts with thousands commas. Not a full-day total |
+| `#quiz`, `#value` | DOHMH Restaurant Inspection Results (`43nn-pn8j`) | `external/dohmh_restaurants_mn.json` | Distinct establishments (CAMIS), Manhattan. 622 in ZIP 10002 |
+| `#quiz`, `#value` | DCLA Cultural Organizations (`u35m-9t32`) | `external/dcla_cultural_orgs_mn.json` | DCLA-listed groups by mailing address. 58 in ZIP 10002 |
+| `#residents` | ACS 2020-2024 5-year, B03002, B01003, B19013 | `external/acs_latest_zcta10002.json` | Via Census Reporter (no key). ZCTA 10002 |
+| `#demographics` | Same tables, all Manhattan tracts | `external/acs_latest_mn_tracts.json` | Rings weighted by share of 2020 blocks per tract |
+| `#demographics` trend | Census API, ACS 2020-2023 5-year | `external/acs20XX_5yr_mn_tracts.json` | **Needs a free key** in `CENSUS_API_KEY`. Census Reporter serves only the latest release |
+| `#demographics`, `#value` | Census LEHD LODES 8 WAC + crosswalk | `lodes/` | Jobs by block, 2002-2024. CNS17 = arts, entertainment, recreation; CNS18 = accommodation and food services |
+| `#address` | NYC DCP PLUTO, Manhattan, 2002-2025 | `pluto/` | Lot 415/150 appears only in 2025 (class Q1, land use 9, built 1926). Earlier years have no separate lot |
+
+Still unsourced: food truck revenue, arts-center revenue (AEP6 lead), the site's original use (comfort station) and history before 1956.
