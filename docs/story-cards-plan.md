@@ -219,3 +219,112 @@ Tests per the repo rules: Vitest for schema and hook logic, Playwright for the 7
 - **Motion over-use.** Seven cards with count-ups can feel busy. Keep one signature motion per card.
 - **Accessibility.** Maps need a text alternative per card (counts in a list). Charts need a table view in the info sheet.
 - **Brand.** Matching the reference's look, icons, or copy would copy someone else's design. Keep the mechanics and build our own assets.
+
+## 9. Implementation plan
+
+Sources: this file, `docs/311wrapped-motion.md` (measured timings), `docs/311wrapped-journey.md` ("Patterns to borrow", journey mechanics). Status: awaiting confirmation. No code written.
+
+### 9.1 What we borrow, mapped to cards
+
+| Pattern (journey / motion doc) | Where it lands |
+|---|---|
+| Hash route per card, reloadable, shareable | All 7. `useCardHash` replaces `useChapterHash` |
+| Segmented progress bar, header label, info / play / close | `StoryShell` |
+| Prev / next, Right arrow advances, Left goes back | `StoryShell`, plus swipe |
+| "Preparing the map and cards" loading state | `StoryShell` until all JSON parsed |
+| One idea per card: one number, one chart, one line | Card layout rule, checked in review |
+| Guess, then reveal (journey cards 3–4) | `#quiz`. Only ship if `quiz.json` has a clear answer |
+| Count-up with rolling digits, ~1.5 s | `#crowd`, `#quiz` reveal, `#demographics` list |
+| Map zoom in the same window as the count-up | `#address` (block → 0.5 mi), `#demographics` rings |
+| Pin appears after zoom settles | `#address` |
+| Bar grows during count-up | `#crowd`, `#residents`, `#value` |
+| Hold ~2 s after each transition | Autoplay timer only. Manual nav never blocked |
+| Comparison to a reference (median / baseline line) | `#value` (dashed baseline), `#demographics` (borough median) |
+| Semantic color, solid vs faded for years | `#value` baseline vs proposal; `#demographics` prior years faded, 2024 solid |
+| Caveat on the card | `Caveat` on every card that shows a number |
+| Shareable end card (Send, Copy, Save poster) | `#value` footer: Copy link, Share (Web Share API). Poster export deferred |
+| No sound by default | No audio |
+| Reduced motion turns everything off | `usePrefersReducedMotion` gates every animation |
+
+### 9.2 Motion tokens (add to `app/src/styles/tokens.css`)
+
+```css
+--dur-card: 900ms;      /* card change, measured ~0.9 s */
+--dur-count: 1500ms;    /* count-up and map zoom, same window */
+--dur-hold: 2000ms;     /* autoplay hold after transition */
+--dur-ui: 150ms;        /* small UI moves, 150–350 ms band */
+--dur-draw: 600ms;      /* rings, bars */
+--stagger: 80ms;
+--ease-story: cubic-bezier(.22,1,.36,1);
+```
+Only `transform`, `opacity`, `clip-path` animate. Bars use `scaleX` from 0, not `width`.
+
+### 9.3 Phases
+
+**Phase 0: Reconcile with existing code (S)**
+- `app/` already has `story/config.ts` (5 chapters: today/baseline/proposal/map/who), `useChapterHash.ts`, `App.tsx`, `tokens.css`, and `public/data/{site,baseline,proposal,map,who}.json`.
+- Replace the 5-chapter config with the 7-card config. Keep `site.json`; retire the others once their content moves into `value.json` and `rings.json`.
+- Color fix: `tokens.css` sets `--color-proposal` to green (`--accent`), but this plan says LESCC red. Pick one before building (see decision 6).
+- Add `population-image1` to `app/public/img/` (not found in repo; user to provide). Export AVIF/WebP at 1x and 2x.
+
+**Phase 1: Shell (M)** — tests first
+- `useCardHash(ids)`: read hash, fallback `#intro`, set `document.title`, return `[index, go]`. Vitest: unknown hash, clamp, back button.
+- `StoryShell`: progress segments (click to jump, `aria-current="step"`), header label, info / play / close, prev / next, keys, swipe (pointer events, 40 px threshold), loading state.
+- Autoplay: off by default. Play starts timer = card motion + `--dur-hold`; pauses on any input or hidden tab.
+- Card transition: outgoing fades, incoming slides up 32 px + fades over `--dur-card`. Focus moves to the card `h1`.
+- `CountUp`: rAF, rolling digits per column, `tabular-nums`, final value in an `aria-live="polite"` sr-only span. Vitest with fake timers.
+- `Caveat`, `SourceSheet` (`<dialog>`, focus trap, Esc closes).
+
+**Phase 2: Data contract (M)**
+- Add `zod`. `schema.ts`: one schema per file, all numeric fields `number | null`, each file has `source[]`, `pulled`, `caveat`.
+- Loader: fetch all 7 files in parallel; on schema fail show "data unavailable" on that card only.
+- `scripts/build_data.py` writes the new shapes with nulls where data is missing. Python test checks the JSON validates the same shape.
+
+**Phase 3: Static cards (S)**
+- `#intro`: image bg + dark overlay (AA contrast), headline, line draw 320 ms, Start → `#crowd`. Hero image `fetchpriority="high"`.
+- `#address`: big address block, map with pin, timeline points marked "to research" until sourced.
+
+**Phase 4: Data cards (L)** — each ships with "awaiting data" first
+- `#crowd`: CountUp + bar. Null today.
+- `#quiz`: `GuessTiles` (radio group, keyboard), lock on choice, reveal both counts via CountUp, right/wrong state from `quiz.json`.
+- `#residents`: `RankBars`, largest first, 80 ms stagger, top group as headline.
+- `#demographics`: `RingMap` (rings draw outward 600 ms) + table per ring; trend sparkline 2019–2024, prior years faded, 2024 solid, projection as dashed range band.
+- `#value`: paired bars, baseline grey, proposal semantic color, dashed baseline reference, "Not a like-for-like comparison" caveat, share footer.
+
+**Phase 5: QA (M)**
+- Playwright: 7-card flow by keys, by buttons, by direct hash load; reduced-motion run (final values at once); screenshots at 320, 768, 1024, 1440; no horizontal overflow at 320–390 px.
+- axe check per card. Lighthouse vs budget (app page: JS < 300 kb gz; map lib lazy-loaded only on `#address` / `#demographics`).
+- Coverage ≥ 80% on hooks, schema, loader.
+
+### 9.4 Dependencies
+
+`zod`, `vitest`, `@testing-library/react`, `@playwright/test`, `@axe-core/playwright`. `maplibre-gl` only if decision 4 picks it (dynamic import). Otherwise SVG rings, no map dep.
+
+### 9.5 Added decisions
+
+6. **Proposal color:** code uses green, plan says red. Which?
+7. **Autoplay:** off by default with Play to start (recommended), or on like the reference?
+8. **End card:** add a share footer on `#value`, or an 8th `#summary` card like the reference?
+
+### 9.7 Decisions applied (user, 2026-11-21)
+
+1. **Palette:** proposal = green (`--accent`). Supporting: white, zinc grey, dark (zinc-900/950). Baseline (food trucks) stays grey. Card backgrounds rotate white / dark / green-soft; never red.
+2. **Autoplay on**, like the reference. Hold = **5 s** (`--dur-hold: 5000ms`) after each card's motion. Pauses on any tap, key, hidden tab, open info sheet, and on `#quiz` and `#summary` until the user answers. Play/pause in header.
+3. **Story grows to 9 cards:**
+
+| # | hash | label | card | data |
+|---|---|---|---|---|
+| 8 | `#summary` | WRAPPED | Recap of cards 2–7 + vote: Food Truck or Cultural Center | votes API |
+| 9 | `#results` | RESULTS | Vote tally: bars count up, user's pick highlighted, share | votes API |
+
+   - Vote tiles reuse `GuessTiles`. One vote per browser (localStorage flag + server-side check by anonymous id). `#results` is locked until a vote is cast; direct hash load without a vote redirects to `#summary`.
+   - **Needs a backend.** The app is static, so a shared tally needs a small store. Proposal: one serverless function + one table (`votes`: choice, created_at, anon_id hash). Options: Supabase or a Vercel function with KV. Rate limit per IP, validate choice enum, no personal data stored. Fallback if API down: show "results unavailable", keep the user's own pick.
+   - Results caveat: "Self-selected visitors. Not a survey or a poll of residents."
+4. **Map: SVG.** 311 Wrapped's map library could not be confirmed (bundle analysis ran out of memory). Its maps are tiled street basemaps with choropleths, which suggests a WebGL map library. We use flat SVG (study-area outline, rings, pin) for zero dependencies and a small bundle. MapLibre stays an upgrade path.
+5. **Card 5 reference:** hotspot screenshot confirmed.
+
+Progress bar and Playwright flow now cover 9 cards. New phase between 4 and 5: **Phase 4b, vote API (M)**: schema, function, rate limit, tests, security review.
+
+### 9.6 Complexity
+
+Shell M, data contract M, static cards S, data cards L (blocked on pulls), QA M. Cards can ship in "awaiting data" state before any pull lands.

@@ -1,4 +1,4 @@
-# 311 Wrapped: journey study (ZIP 10001)
+# 311 Wrapped: journey study (ZIP 10002)
 
 Study of the story flow at https://311wrapped.com/10001, captured 2026-11-21. Used to design our storytelling app. We borrow structure and interaction patterns only. We do not copy their copy, art, icons, or data.
 

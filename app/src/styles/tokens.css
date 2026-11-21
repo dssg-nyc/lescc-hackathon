@@ -89,6 +89,16 @@
 
   --duration-fast: 150ms;
   --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Story motion, measured from the reference (docs/311wrapped-motion.md).
+     Hold is 5 s by product decision (reference holds ~2 s). */
+  --dur-card: 900ms;
+  --dur-count: 1500ms;
+  --dur-hold: 5000ms;
+  --dur-ui: 150ms;
+  --dur-draw: 600ms;
+  --stagger: 80ms;
+  --ease-story: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 @media (min-width: 640px) {

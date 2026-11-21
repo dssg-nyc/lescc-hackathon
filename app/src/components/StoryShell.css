@@ -1,0 +1,52 @@
+.shell { display: grid; gap: 0.75rem; }
+
+.shell-progress { display: flex; gap: 4px; }
+.shell-seg {
+  flex: 1; height: 16px; padding: 6px 0; border: 0; background: none; cursor: pointer;
+}
+.shell-seg-fill {
+  display: block; height: 4px; border-radius: var(--radius-full);
+  background: var(--border); position: relative; overflow: hidden;
+}
+.shell-seg-fill::after {
+  content: ""; position: absolute; inset: 0; background: var(--fg);
+  transform: scaleX(0); transform-origin: left;
+}
+.shell-seg[data-state="done"] .shell-seg-fill::after,
+.shell-seg[data-state="current"] .shell-seg-fill::after { transform: scaleX(1); }
+.shell-seg[data-state="current"][data-playing="true"] .shell-seg-fill::after {
+  animation: seg-fill var(--dur-autoplay) linear forwards;
+}
+.shell-seg:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+@keyframes seg-fill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+.shell-header { display: flex; align-items: center; justify-content: space-between; }
+.shell-label {
+  margin: 0; font-size: var(--text-xs); font-weight: var(--font-weight-black);
+  letter-spacing: 0.12em;
+}
+.shell-actions { display: flex; gap: 0.25rem; }
+.shell-icon, .shell-arrow {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: var(--radius-full);
+  border: 1px solid var(--border); background: var(--bg); color: var(--fg); cursor: pointer;
+  transition: background var(--dur-ui) var(--ease-story), transform var(--dur-ui) var(--ease-story);
+}
+.shell-icon { border-color: transparent; background: transparent; }
+.shell-icon:hover, .shell-arrow:hover:not(:disabled) { background: var(--hover-wash); }
+.shell-arrow:active:not(:disabled) { transform: scale(0.94); }
+.shell-arrow:disabled { opacity: 0.35; cursor: default; }
+.shell-icon:focus-visible, .shell-arrow:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.shell-icon svg, .shell-arrow svg {
+  width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2;
+  stroke-linecap: round; stroke-linejoin: round;
+}
+
+.shell-card-region { touch-action: pan-y; }
+
+.shell-nav { display: flex; align-items: center; justify-content: space-between; }
+.shell-count { font-size: var(--text-xs); color: var(--muted); font-variant-numeric: tabular-nums; }
+
+@media (prefers-reduced-motion: reduce) {
+  .shell-seg[data-state="current"][data-playing="true"] .shell-seg-fill::after { animation: none; }
+  .shell-icon, .shell-arrow { transition: none; }
+}
