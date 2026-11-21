@@ -1,9 +1,155 @@
 {
   "generated": "2026-11-21",
-  "status": "placeholder",
-  "address": "76 Delancey St, New York, NY 10002",
-  "closed_year": 1956,
+  "status": "partial",
+  "caveat": "History points marked 'to research' have no source yet and are not shown as fact.",
   "sources": [
-    "LESCC proposal deck (Rd2_LESCulturalCenter_Deck.pdf), p.2"
+    {
+      "name": "NYC DCP PLUTO (Manhattan, 2002-2025)",
+      "url": "https://www.nyc.gov/site/planning/data-maps/open-data/dwn-pluto-mappluto.page",
+      "pulled": "2026-11-21"
+    },
+    {
+      "name": "NYC Planning Labs GeoSearch",
+      "url": "https://geosearch.planninglabs.nyc/v2/search?text=76 Delancey St Manhattan",
+      "pulled": "2026-11-21"
+    }
+  ],
+  "address": "76 Delancey St, New York, NY 10002",
+  "lat": 40.719552,
+  "lon": -73.990207,
+  "bbl": "1004150150",
+  "lot": {
+    "year": 2025,
+    "found": true,
+    "bldgclass": "Q1",
+    "landuse": 9.0,
+    "yearbuilt": 1926.0,
+    "bldgarea": 2500.0,
+    "assesstot": 1057050.0
+  },
+  "lot_history": [
+    {
+      "year": 2002,
+      "found": false
+    },
+    {
+      "year": 2003,
+      "found": false
+    },
+    {
+      "year": 2004,
+      "found": false
+    },
+    {
+      "year": 2006,
+      "found": false
+    },
+    {
+      "year": 2007,
+      "found": false
+    },
+    {
+      "year": 2008,
+      "found": false
+    },
+    {
+      "year": 2009,
+      "found": false
+    },
+    {
+      "year": 2010,
+      "found": false
+    },
+    {
+      "year": 2011,
+      "found": false
+    },
+    {
+      "year": 2012,
+      "found": false
+    },
+    {
+      "year": 2013,
+      "found": false
+    },
+    {
+      "year": 2014,
+      "found": false
+    },
+    {
+      "year": 2015,
+      "found": false
+    },
+    {
+      "year": 2016,
+      "found": false
+    },
+    {
+      "year": 2017,
+      "found": false
+    },
+    {
+      "year": 2018,
+      "found": false
+    },
+    {
+      "year": 2019,
+      "found": false
+    },
+    {
+      "year": 2020,
+      "found": false
+    },
+    {
+      "year": 2021,
+      "found": false
+    },
+    {
+      "year": 2022,
+      "found": false
+    },
+    {
+      "year": 2023,
+      "found": false
+    },
+    {
+      "year": 2024,
+      "found": false
+    },
+    {
+      "year": 2025,
+      "found": true,
+      "bldgclass": "Q1",
+      "landuse": 9.0,
+      "yearbuilt": 1926.0,
+      "bldgarea": 2500.0,
+      "assesstot": 1057050.0
+    }
+  ],
+  "timeline": [
+    {
+      "year": 1926,
+      "text": "Year built, per the tax lot record.",
+      "status": "sourced",
+      "source": "NYC DCP PLUTO"
+    },
+    {
+      "year": 1956,
+      "text": "Public building closed.",
+      "status": "sourced",
+      "source": "LESCC proposal deck (Rd2_LESCulturalCenter_Deck.pdf), p.2"
+    },
+    {
+      "year": null,
+      "text": "Original public use (comfort station).",
+      "status": "to_research",
+      "source": null
+    },
+    {
+      "year": null,
+      "text": "Vision: a community-run cultural center.",
+      "status": "sourced",
+      "source": "LESCC community bid (data/raw/lescc-community-bid.json)"
+    }
   ]
 }

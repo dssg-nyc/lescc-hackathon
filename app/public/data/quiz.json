@@ -1,0 +1,32 @@
+{
+  "generated": "2026-11-21",
+  "status": "ok",
+  "caveat": "Restaurants = establishments with a health inspection on record. Cultural organizations = groups on the DCLA list, by mailing address. Not every venue is listed.",
+  "sources": [
+    {
+      "name": "NYC DOHMH Restaurant Inspection Results (43nn-pn8j), distinct establishments",
+      "url": "https://data.cityofnewyork.us/d/43nn-pn8j",
+      "pulled": "2026-11-21"
+    },
+    {
+      "name": "NYC DCLA Cultural Organizations (u35m-9t32)",
+      "url": "https://data.cityofnewyork.us/d/u35m-9t32",
+      "pulled": "2026-11-21"
+    }
+  ],
+  "question": "Which is more common in ZIP 10002?",
+  "options": [
+    {
+      "id": "restaurants",
+      "label": "Restaurants",
+      "count": 622
+    },
+    {
+      "id": "cultural",
+      "label": "Art and cultural organizations",
+      "count": 58
+    }
+  ],
+  "answer": "restaurants",
+  "ratio": 10.7
+}

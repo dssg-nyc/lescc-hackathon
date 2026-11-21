@@ -1,0 +1,333 @@
+{
+  "generated": "2026-11-21",
+  "status": "ok",
+  "caveat": "People counted during three weekday count periods (morning, midday, evening). Not a full-day total.",
+  "sources": [
+    {
+      "name": "NYC DOT Bi-Annual Pedestrian Counts",
+      "url": "https://data.cityofnewyork.us/Transportation/Bi-Annual-Pedestrian-Counts/2de2-6x2h",
+      "pulled": "2026-11-21"
+    }
+  ],
+  "station": {
+    "loc": 40,
+    "street": "Delancey Street",
+    "from": "Orchard Street",
+    "to": "Ludlow Street",
+    "miles_from_site": 0.06
+  },
+  "latest": {
+    "period": "Sep 2026",
+    "year": 2026,
+    "am": 1037,
+    "md": 3607,
+    "pm": 4129,
+    "total": 8773
+  },
+  "series": [
+    {
+      "period": "May 2007",
+      "year": 2007,
+      "am": 1085,
+      "md": 2529,
+      "pm": 2733,
+      "total": 6347
+    },
+    {
+      "period": "Sep 2007",
+      "year": 2007,
+      "am": 1433,
+      "md": 2701,
+      "pm": 4104,
+      "total": 8238
+    },
+    {
+      "period": "May 2008",
+      "year": 2008,
+      "am": 1015,
+      "md": 2718,
+      "pm": 2947,
+      "total": 6680
+    },
+    {
+      "period": "Sep 2008",
+      "year": 2008,
+      "am": 958,
+      "md": 1635,
+      "pm": 2218,
+      "total": 4811
+    },
+    {
+      "period": "May 2009",
+      "year": 2009,
+      "am": 869,
+      "md": 1378,
+      "pm": 1680,
+      "total": 3927
+    },
+    {
+      "period": "Sep 2009",
+      "year": 2009,
+      "am": 1664,
+      "md": 2233,
+      "pm": 4708,
+      "total": 8605
+    },
+    {
+      "period": "May 2010",
+      "year": 2010,
+      "am": 940,
+      "md": 2093,
+      "pm": 2702,
+      "total": 5735
+    },
+    {
+      "period": "Sep 2010",
+      "year": 2010,
+      "am": 1396,
+      "md": 1861,
+      "pm": 2912,
+      "total": 6169
+    },
+    {
+      "period": "May 2011",
+      "year": 2011,
+      "am": 1036,
+      "md": 2119,
+      "pm": 2741,
+      "total": 5896
+    },
+    {
+      "period": "Sep 2011",
+      "year": 2011,
+      "am": 969,
+      "md": 1592,
+      "pm": 2606,
+      "total": 5167
+    },
+    {
+      "period": "May 2012",
+      "year": 2012,
+      "am": 1451,
+      "md": 2514,
+      "pm": 2495,
+      "total": 6460
+    },
+    {
+      "period": "Sep 2012",
+      "year": 2012,
+      "am": 1616,
+      "md": 3385,
+      "pm": 4262,
+      "total": 9263
+    },
+    {
+      "period": "May 2013",
+      "year": 2013,
+      "am": 1472,
+      "md": 3776,
+      "pm": 4415,
+      "total": 9663
+    },
+    {
+      "period": "Sep 2013",
+      "year": 2013,
+      "am": 1594,
+      "md": 2951,
+      "pm": 4278,
+      "total": 8823
+    },
+    {
+      "period": "May 2014",
+      "year": 2014,
+      "am": 1558,
+      "md": 2809,
+      "pm": 4792,
+      "total": 9159
+    },
+    {
+      "period": "Sep 2014",
+      "year": 2014,
+      "am": 1636,
+      "md": 2626,
+      "pm": 4480,
+      "total": 8742
+    },
+    {
+      "period": "May 2015",
+      "year": 2015,
+      "am": 1357,
+      "md": 3367,
+      "pm": 4543,
+      "total": 9267
+    },
+    {
+      "period": "Sep 2015",
+      "year": 2015,
+      "am": 1557,
+      "md": 1973,
+      "pm": 4809,
+      "total": 8339
+    },
+    {
+      "period": "May 2016",
+      "year": 2016,
+      "am": 1746,
+      "md": 3197,
+      "pm": 5086,
+      "total": 10029
+    },
+    {
+      "period": "Sep 2016",
+      "year": 2016,
+      "am": 1847,
+      "md": 3032,
+      "pm": 4847,
+      "total": 9726
+    },
+    {
+      "period": "May 2017",
+      "year": 2017,
+      "am": 1647,
+      "md": 3295,
+      "pm": 4534,
+      "total": 9476
+    },
+    {
+      "period": "Sep 2017",
+      "year": 2017,
+      "am": 1634,
+      "md": 2420,
+      "pm": 3238,
+      "total": 7292
+    },
+    {
+      "period": "May 2018",
+      "year": 2018,
+      "am": 1851,
+      "md": 3249,
+      "pm": 4772,
+      "total": 9872
+    },
+    {
+      "period": "Sep 2018",
+      "year": 2018,
+      "am": 1629,
+      "md": 3034,
+      "pm": 4010,
+      "total": 8673
+    },
+    {
+      "period": "May 2019",
+      "year": 2019,
+      "am": 1704,
+      "md": 3351,
+      "pm": 4692,
+      "total": 9747
+    },
+    {
+      "period": "Oct 2020",
+      "year": 2020,
+      "am": 318,
+      "md": 1499,
+      "pm": 832,
+      "total": 2649
+    },
+    {
+      "period": "May 2021",
+      "year": 2021,
+      "am": 775,
+      "md": 2390,
+      "pm": 2652,
+      "total": 5817
+    },
+    {
+      "period": "Oct 2021",
+      "year": 2021,
+      "am": 1269,
+      "md": 2764,
+      "pm": 3643,
+      "total": 7676
+    },
+    {
+      "period": "May 2022",
+      "year": 2022,
+      "am": 1151,
+      "md": 2617,
+      "pm": 3285,
+      "total": 7053
+    },
+    {
+      "period": "Oct 2022",
+      "year": 2022,
+      "am": 1220,
+      "md": 3264,
+      "pm": 3975,
+      "total": 8459
+    },
+    {
+      "period": "May 2023",
+      "year": 2023,
+      "am": 1077,
+      "md": 2868,
+      "pm": 4128,
+      "total": 8073
+    },
+    {
+      "period": "Oct 2023",
+      "year": 2023,
+      "am": 1063,
+      "md": 2939,
+      "pm": 3982,
+      "total": 7984
+    },
+    {
+      "period": "Jun 2024",
+      "year": 2024,
+      "am": 1055,
+      "md": 2657,
+      "pm": 3672,
+      "total": 7384
+    },
+    {
+      "period": "Oct 2024",
+      "year": 2024,
+      "am": 1180,
+      "md": 3459,
+      "pm": 4381,
+      "total": 9020
+    },
+    {
+      "period": "May 2025",
+      "year": 2025,
+      "am": 1158,
+      "md": 3278,
+      "pm": 4554,
+      "total": 8990
+    },
+    {
+      "period": "Oct 2025",
+      "year": 2025,
+      "am": 1123,
+      "md": 3566,
+      "pm": 3933,
+      "total": 8622
+    },
+    {
+      "period": "May 2026",
+      "year": 2026,
+      "am": 1217,
+      "md": 3547,
+      "pm": 4315,
+      "total": 9079
+    },
+    {
+      "period": "Sep 2026",
+      "year": 2026,
+      "am": 1037,
+      "md": 3607,
+      "pm": 4129,
+      "total": 8773
+    }
+  ]
+}

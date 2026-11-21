@@ -1,0 +1,207 @@
+{
+  "generated": "2026-11-21",
+  "status": "partial",
+  "caveat": "Not a like-for-like comparison. Parks caf\u00e9 and parkhouse figures are concession comparables, not food truck benchmarks. Food truck revenue is not public.",
+  "sources": [
+    {
+      "name": "Census LEHD LODES 8 WAC, sectors 71 and 72",
+      "url": "https://lehd.ces.census.gov/data/",
+      "pulled": "2026-11-21"
+    },
+    {
+      "name": "NYC DOHMH Restaurant Inspection Results (43nn-pn8j)",
+      "url": "https://data.cityofnewyork.us/d/43nn-pn8j",
+      "pulled": "2026-11-21"
+    },
+    {
+      "name": "NYC DCLA Cultural Organizations (u35m-9t32)",
+      "url": "https://data.cityofnewyork.us/d/u35m-9t32",
+      "pulled": "2026-11-21"
+    },
+    {
+      "name": "NYC Parks solicitation M4-SB-2026, comparable concessions",
+      "url": null,
+      "pulled": "2026-11-21"
+    },
+    {
+      "name": "LESCC proposal deck, financial projections (applicant model, unverified)",
+      "url": null,
+      "pulled": "2026-11-21"
+    }
+  ],
+  "jobs_trend": [
+    {
+      "year": 2002,
+      "total": 31262,
+      "arts": 495,
+      "food": 4351
+    },
+    {
+      "year": 2003,
+      "total": 31137,
+      "arts": 521,
+      "food": 4524
+    },
+    {
+      "year": 2004,
+      "total": 31893,
+      "arts": 646,
+      "food": 4810
+    },
+    {
+      "year": 2005,
+      "total": 32326,
+      "arts": 656,
+      "food": 5298
+    },
+    {
+      "year": 2006,
+      "total": 33988,
+      "arts": 748,
+      "food": 5798
+    },
+    {
+      "year": 2007,
+      "total": 35632,
+      "arts": 834,
+      "food": 6217
+    },
+    {
+      "year": 2008,
+      "total": 37143,
+      "arts": 854,
+      "food": 6845
+    },
+    {
+      "year": 2009,
+      "total": 35550,
+      "arts": 871,
+      "food": 6910
+    },
+    {
+      "year": 2010,
+      "total": 38583,
+      "arts": 999,
+      "food": 7552
+    },
+    {
+      "year": 2011,
+      "total": 44947,
+      "arts": 994,
+      "food": 8567
+    },
+    {
+      "year": 2012,
+      "total": 48299,
+      "arts": 1066,
+      "food": 10152
+    },
+    {
+      "year": 2013,
+      "total": 50693,
+      "arts": 1178,
+      "food": 11273
+    },
+    {
+      "year": 2014,
+      "total": 55762,
+      "arts": 1411,
+      "food": 12125
+    },
+    {
+      "year": 2015,
+      "total": 53546,
+      "arts": 1421,
+      "food": 11948
+    },
+    {
+      "year": 2016,
+      "total": 64875,
+      "arts": 1234,
+      "food": 13290
+    },
+    {
+      "year": 2017,
+      "total": 61467,
+      "arts": 1269,
+      "food": 13443
+    },
+    {
+      "year": 2018,
+      "total": 62750,
+      "arts": 1171,
+      "food": 13457
+    },
+    {
+      "year": 2019,
+      "total": 63623,
+      "arts": 1322,
+      "food": 13441
+    },
+    {
+      "year": 2020,
+      "total": 47353,
+      "arts": 894,
+      "food": 4579
+    },
+    {
+      "year": 2021,
+      "total": 51557,
+      "arts": 945,
+      "food": 7324
+    },
+    {
+      "year": 2022,
+      "total": 62551,
+      "arts": 1437,
+      "food": 11948
+    },
+    {
+      "year": 2023,
+      "total": 63839,
+      "arts": 1643,
+      "food": 12803
+    },
+    {
+      "year": 2024,
+      "total": 63590,
+      "arts": 1511,
+      "food": 13035
+    }
+  ],
+  "food_supply": {
+    "restaurants": {
+      "0.5": 1148,
+      "1.0": 2689,
+      "2.0": 5622
+    },
+    "cultural_orgs": {
+      "0.5": 91,
+      "1.0": 287,
+      "2.0": 577
+    }
+  },
+  "concession_comparables": [
+    {
+      "name": "Hunter's Point South Caf\u00e9",
+      "period": "8/2024-7/2025",
+      "gross": 1334129.0,
+      "fee": 201303.0
+    },
+    {
+      "name": "McCarren Parkhouse",
+      "period": "6/2024-5/2025",
+      "gross": 1456041.0,
+      "fee": 145603.7
+    }
+  ],
+  "proposal": {
+    "coffee_concession_per_day": 1000,
+    "programming_per_month": 2000,
+    "urban_gardening_per_year": 6000,
+    "direct_costs": 260000,
+    "fixed_costs": 95000
+  },
+  "food_truck_revenue": null,
+  "arts_center_revenue": null
+}
