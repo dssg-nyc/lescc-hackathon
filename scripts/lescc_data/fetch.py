@@ -79,3 +79,21 @@ def acs_tract_income(year: int, refresh: bool = False) -> dict | None:
         {"get": "B01003_001E,B19013_001E", "for": "tract:*", "in": "state:36 county:061", "key": key or ""},
         refresh,
     )
+
+
+DATAUSA = "https://api.datausa.io/tesseract/data.jsonrecords"
+
+
+def datausa_income(level: str, geo_id: str, name: str, refresh: bool = False) -> dict:
+    """ACS 5-year median household income by year (B19013, all races) via DataUSA. No key needed."""
+    return _snapshot(
+        name,
+        DATAUSA,
+        {
+            "cube": "acs_ygr_median_household_income_race_5",
+            "drilldowns": f"Year,{level}",
+            "measures": "Household Income by Race,Household Income by Race Moe",
+            "include": f"{level}:{geo_id};Race:0",
+        },
+        refresh,
+    )

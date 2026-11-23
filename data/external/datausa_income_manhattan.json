@@ -1,0 +1,119 @@
+{
+ "pulled": "2026-11-22",
+ "url": "https://api.datausa.io/tesseract/data.jsonrecords",
+ "params": {
+  "cube": "acs_ygr_median_household_income_race_5",
+  "drilldowns": "Year,County",
+  "measures": "Household Income by Race,Household Income by Race Moe",
+  "include": "County:05000US36061;Race:0"
+ },
+ "data": {
+  "annotations": {
+   "source_description": "The American Community Survey (ACS) is conducted by the US Census and sent to a portion of the population every year.",
+   "subtopic": "Income",
+   "table_id": "B19013,B19013A,B19013B,B19013C,B19013D,B19013E,B19013F,B19013G,B19013H",
+   "dataset_name": "ACS 5-year Estimate",
+   "dataset_link": "http://www.census.gov/programs-surveys/acs/",
+   "topic": "Housing & Living",
+   "source_name": "Census Bureau"
+  },
+  "page": {
+   "limit": 0,
+   "offset": 0,
+   "total": 12
+  },
+  "columns": [
+   "County ID",
+   "County",
+   "Year",
+   "Household Income by Race",
+   "Household Income by Race Moe"
+  ],
+  "data": [
+   {
+    "County ID": "05000US36061",
+    "County": "New York County, NY",
+    "Year": 2013,
+    "Household Income by Race": 69659.0,
+    "Household Income by Race Moe": 979.0000000000001
+   },
+   {
+    "County ID": "05000US36061",
+    "County": "New York County, NY",
+    "Year": 2014,
+    "Household Income by Race": 71656.0,
+    "Household Income by Race Moe": 825.0
+   },
+   {
+    "County ID": "05000US36061",
+    "County": "New York County, NY",
+    "Year": 2015,
+    "Household Income by Race": 72871.0,
+    "Household Income by Race Moe": 1113.0
+   },
+   {
+    "County ID": "05000US36061",
+    "County": "New York County, NY",
+    "Year": 2016,
+    "Household Income by Race": 75513.0,
+    "Household Income by Race Moe": 1030.0
+   },
+   {
+    "County ID": "05000US36061",
+    "County": "New York County, NY",
+    "Year": 2017,
+    "Household Income by Race": 79781.0,
+    "Household Income by Race Moe": 1158.0
+   },
+   {
+    "County ID": "05000US36061",
+    "County": "New York County, NY",
+    "Year": 2018,
+    "Household Income by Race": 82459.0,
+    "Household Income by Race Moe": 950.9999999999999
+   },
+   {
+    "County ID": "05000US36061",
+    "County": "New York County, NY",
+    "Year": 2019,
+    "Household Income by Race": 86553.0,
+    "Household Income by Race Moe": 987.0
+   },
+   {
+    "County ID": "05000US36061",
+    "County": "New York County, NY",
+    "Year": 2020,
+    "Household Income by Race": 89812.0,
+    "Household Income by Race Moe": 1681.0
+   },
+   {
+    "County ID": "05000US36061",
+    "County": "New York County, NY",
+    "Year": 2021,
+    "Household Income by Race": 93956.0,
+    "Household Income by Race Moe": 1493.0
+   },
+   {
+    "County ID": "05000US36061",
+    "County": "New York County, NY",
+    "Year": 2022,
+    "Household Income by Race": 99880.0,
+    "Household Income by Race Moe": 1781.0000000000002
+   },
+   {
+    "County ID": "05000US36061",
+    "County": "New York County, NY",
+    "Year": 2023,
+    "Household Income by Race": 104553.0,
+    "Household Income by Race Moe": 1777.0
+   },
+   {
+    "County ID": "05000US36061",
+    "County": "New York County, NY",
+    "Year": 2024,
+    "Household Income by Race": 103931.0,
+    "Household Income by Race Moe": 1490.0
+   }
+  ]
+ }
+}

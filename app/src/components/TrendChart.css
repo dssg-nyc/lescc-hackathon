@@ -1,0 +1,9 @@
+.trend { width: 100%; height: auto; display: block; overflow: visible; }
+.trend-main { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
+  stroke-dasharray: 1; stroke-dashoffset: 1; animation: trend-draw var(--dur-count) var(--ease-story) forwards; }
+.trend-ref { fill: none; stroke: currentColor; stroke-opacity: 0.3; stroke-width: 2; }
+.trend-band { fill: var(--accent); fill-opacity: 0.18; stroke: var(--accent); stroke-dasharray: 4 4; stroke-width: 1.5; }
+.trend-dot { fill: var(--accent); stroke: var(--surface); stroke-width: 2; }
+.trend-tick, .trend-label { fill: currentColor; font-size: 11px; opacity: 0.7; }
+@keyframes trend-draw { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .trend-main { animation: none; stroke-dashoffset: 0; } }

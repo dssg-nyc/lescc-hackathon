@@ -44,7 +44,7 @@ export const CARDS: readonly Card[] = [
   {
     id: "crowd",
     label: "FOOT TRAFFIC",
-    headline: "People who pass the corner each day.",
+    headline: "People counted passing the corner.",
     caveat: "Foot traffic source not yet chosen. Shown as awaiting data.",
     tone: "light",
     dataFile: "foot.json",
@@ -69,7 +69,7 @@ export const CARDS: readonly Card[] = [
   {
     id: "address",
     label: "HOTSPOT",
-    headline: "76 Delancey St.",
+    headline: "The address.",
     caveat: "History points stay 'to research' until each has a source.",
     tone: "dark",
     dataFile: "site.json",

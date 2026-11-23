@@ -1,0 +1,119 @@
+{
+ "pulled": "2026-11-22",
+ "url": "https://api.datausa.io/tesseract/data.jsonrecords",
+ "params": {
+  "cube": "acs_ygr_median_household_income_race_5",
+  "drilldowns": "Year,PUMA",
+  "measures": "Household Income by Race,Household Income by Race Moe",
+  "include": "PUMA:79500US3604103;Race:0"
+ },
+ "data": {
+  "annotations": {
+   "dataset_name": "ACS 5-year Estimate",
+   "subtopic": "Income",
+   "dataset_link": "http://www.census.gov/programs-surveys/acs/",
+   "source_description": "The American Community Survey (ACS) is conducted by the US Census and sent to a portion of the population every year.",
+   "table_id": "B19013,B19013A,B19013B,B19013C,B19013D,B19013E,B19013F,B19013G,B19013H",
+   "topic": "Housing & Living",
+   "source_name": "Census Bureau"
+  },
+  "page": {
+   "limit": 0,
+   "offset": 0,
+   "total": 12
+  },
+  "columns": [
+   "PUMA ID",
+   "PUMA",
+   "Year",
+   "Household Income by Race",
+   "Household Income by Race Moe"
+  ],
+  "data": [
+   {
+    "PUMA ID": "79500US3604103",
+    "PUMA": "NYC-Manhattan Community District 3--Lower East Side & Chinatown PUMA, NY",
+    "Year": 2013,
+    "Household Income by Race": 42656.0,
+    "Household Income by Race Moe": 1900.0
+   },
+   {
+    "PUMA ID": "79500US3604103",
+    "PUMA": "NYC-Manhattan Community District 3--Lower East Side & Chinatown PUMA, NY",
+    "Year": 2014,
+    "Household Income by Race": 42873.0,
+    "Household Income by Race Moe": 2176.0
+   },
+   {
+    "PUMA ID": "79500US3604103",
+    "PUMA": "NYC-Manhattan Community District 3--Lower East Side & Chinatown PUMA, NY",
+    "Year": 2015,
+    "Household Income by Race": 42102.0,
+    "Household Income by Race Moe": 2218.0
+   },
+   {
+    "PUMA ID": "79500US3604103",
+    "PUMA": "NYC-Manhattan Community District 3--Lower East Side & Chinatown PUMA, NY",
+    "Year": 2016,
+    "Household Income by Race": 42223.0,
+    "Household Income by Race Moe": 2730.0
+   },
+   {
+    "PUMA ID": "79500US3604103",
+    "PUMA": "NYC-Manhattan Community District 3--Lower East Side & Chinatown PUMA, NY",
+    "Year": 2017,
+    "Household Income by Race": 43316.0,
+    "Household Income by Race Moe": 2644.0
+   },
+   {
+    "PUMA ID": "79500US3604103",
+    "PUMA": "NYC-Manhattan Community District 3--Lower East Side & Chinatown PUMA, NY",
+    "Year": 2018,
+    "Household Income by Race": 43705.0,
+    "Household Income by Race Moe": 2939.0
+   },
+   {
+    "PUMA ID": "79500US3604103",
+    "PUMA": "NYC-Manhattan Community District 3--Lower East Side & Chinatown PUMA, NY",
+    "Year": 2019,
+    "Household Income by Race": 45119.0,
+    "Household Income by Race Moe": 2605.0
+   },
+   {
+    "PUMA ID": "79500US3604103",
+    "PUMA": "NYC-Manhattan Community District 3--Lower East Side & Chinatown PUMA, NY",
+    "Year": 2020,
+    "Household Income by Race": 46083.0,
+    "Household Income by Race Moe": 3705.0
+   },
+   {
+    "PUMA ID": "79500US3604103",
+    "PUMA": "NYC-Manhattan Community District 3--Lower East Side & Chinatown PUMA, NY",
+    "Year": 2021,
+    "Household Income by Race": 50269.0,
+    "Household Income by Race Moe": 3314.0
+   },
+   {
+    "PUMA ID": "79500US3604103",
+    "PUMA": "NYC-Manhattan Community District 3--Lower East Side & Chinatown PUMA, NY",
+    "Year": 2022,
+    "Household Income by Race": 54111.0,
+    "Household Income by Race Moe": 3417.0
+   },
+   {
+    "PUMA ID": "79500US3604103",
+    "PUMA": "NYC-Manhattan Community District 3--Lower East Side & Chinatown PUMA, NY",
+    "Year": 2023,
+    "Household Income by Race": 58717.0,
+    "Household Income by Race Moe": 4677.0
+   },
+   {
+    "PUMA ID": "79500US3604103",
+    "PUMA": "NYC-Manhattan Community District 3--Lower East Side & Chinatown PUMA, NY",
+    "Year": 2024,
+    "Household Income by Race": 59411.0,
+    "Household Income by Race Moe": 5467.0
+   }
+  ]
+ }
+}

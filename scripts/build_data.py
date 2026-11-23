@@ -27,12 +27,20 @@ from lescc_data.foot import nearest_station
 from lescc_data.geo import RINGS_MI, SITE, miles_from_site
 from lescc_data.quiz import build_quiz
 from lescc_data.rings import ring_totals, tract_weights
+from lescc_data.trend import project_range
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 OUT_DIR = ROOT / "app" / "public" / "data"
 ZIP = "10002"
 TREND_YEARS = (2020, 2021, 2022, 2023)
+PROJECTION_YEAR = 2029
+RECENT_FROM = 2019
+# Lower East Side & Chinatown (Community District 3) PUMA, and Manhattan for comparison.
+TREND_GEOS = [
+    ("PUMA", "79500US3604103", "Lower East Side & Chinatown (CD3)", "datausa_income_cd3"),
+    ("County", "05000US36061", "Manhattan", "datausa_income_manhattan"),
+]
 # LODES NAICS sectors: CNS18 = accommodation and food services (72),
 # CNS17 = arts, entertainment, and recreation (71).
 JOB_COLS = ["C000", "CNS17", "CNS18"]
@@ -223,6 +231,18 @@ def build_rings(refresh: bool, blocks: pd.DataFrame, jobs_latest: dict) -> dict:
         trend_sources.append(src(f"U.S. Census Bureau API, ACS {year} 5-year", "https://api.census.gov", snap_y["pulled"]))
     trend.append({"release": release, "rings": {str(k): v for k, v in latest.items()}})
 
+    area_trend = []
+    for level, geo_id, label, name in TREND_GEOS:
+        snap_t = fetch.datausa_income(level, geo_id, name, refresh)
+        series = [
+            {"year": int(r["Year"]), "median": round(r["Household Income by Race"]),
+             "moe": round(r.get("Household Income by Race Moe") or 0)}
+            for r in sorted(snap_t["data"]["data"], key=lambda r: r["Year"])
+        ]
+        area_trend.append({"geography": label, "series": series})
+        trend_sources.append(src(f"ACS 5-year B19013 via DataUSA: {label}", "https://datausa.io", snap_t["pulled"]))
+    projection = project_range(area_trend[0]["series"], PROJECTION_YEAR, RECENT_FROM) if area_trend else None
+
     rings = [
         {"miles": r, **latest.get(r, {"population": None, "median_income_est": None, "tracts": 0}),
          "jobs": jobs_latest.get(str(r))}
@@ -230,15 +250,16 @@ def build_rings(refresh: bool, blocks: pd.DataFrame, jobs_latest: dict) -> dict:
     ]
     has_trend = len(trend) > 1
     return envelope(
-        "ok" if has_trend else "partial",
-        "Tracts crossing a ring are weighted by their share of Census blocks inside it. Ring income is a population-weighted mean of tract medians, not a true median. Trend uses overlapping 5-year windows.",
+        "ok",
+        "Tracts crossing a ring are weighted by their share of Census blocks inside it. Ring income is a population-weighted mean of tract medians, not a true median. The trend is for Community District 3, in nominal dollars, from overlapping 5-year windows. The projection is a trend range, not a forecast.",
         [src(f"U.S. Census Bureau, {release}, B01003 and B19013 (via Census Reporter)", "https://censusreporter.org", snap["pulled"]),
          src("Census LEHD LODES 8 block crosswalk and WAC", "https://lehd.ces.census.gov/data/", "2026-11-21"),
          *trend_sources],
         release=release,
         rings=rings,
         income_trend=trend if has_trend else None,
-        projection=None,
+        area_trend=area_trend,
+        projection=projection,
     )
 
 
