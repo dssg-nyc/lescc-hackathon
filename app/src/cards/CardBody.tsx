@@ -26,13 +26,19 @@ export function CardBody(props: CardProps) {
     return entry.data;
   };
 
+  const opt = <K extends DataFile>(name: K): StoryData[K] | null => {
+    const entry = story[name];
+    return entry.ok ? entry.data : null;
+  };
+  const site = opt("site.json");
+
   switch (card.id) {
     case "intro": return <IntroCard onStart={props.onStart} />;
     case "crowd": return <CrowdCard data={get("foot.json")} />;
     case "quiz": return <QuizCard data={get("quiz.json")} onAnswered={props.onAnswered} />;
     case "residents": return <ResidentsCard data={get("acs.json")} />;
-    case "address": return <AddressCard data={get("site.json")} />;
-    case "demographics": return <DemographicsCard data={get("rings.json")} points={story["points.json"].ok ? story["points.json"].data : null} />;
+    case "address": return <AddressCard data={get("site.json")} zips={opt("zips.json")} points={opt("points.json")} />;
+    case "demographics": return <DemographicsCard data={get("rings.json")} zips={opt("zips.json")} center={site ? [site.lon, site.lat] : [-73.990207, 40.719552]} />;
     case "value": return <ValueCard data={get("value.json")} />;
     case "summary": return <SummaryCard story={story} vote={props.vote} onVote={props.onVote} />;
     case "results": return <ResultsCard vote={props.vote} tally={props.tally} />;

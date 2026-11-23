@@ -21,7 +21,7 @@ SOCRATA = "https://data.cityofnewyork.us/resource"
 CENSUS_REPORTER = "https://api.censusreporter.org/1.0/data/show/latest"
 
 
-def _snapshot(name: str, url: str, params: dict, refresh: bool) -> dict:
+def _snapshot(name: str, url: str, params: dict, refresh: bool, compact: bool = False) -> dict:
     path = EXTERNAL / f"{name}.json"
     if path.exists() and not refresh:
         return json.loads(path.read_text(encoding="utf-8"))
@@ -30,7 +30,8 @@ def _snapshot(name: str, url: str, params: dict, refresh: bool) -> dict:
     safe_params = {k: v for k, v in params.items() if k != "key"}
     doc = {"pulled": date.today().isoformat(), "url": url, "params": safe_params, "data": resp.json()}
     EXTERNAL.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(doc, indent=1) + "\n", encoding="utf-8")
+    text = json.dumps(doc, separators=(",", ":")) if compact else json.dumps(doc, indent=1)
+    path.write_text(text + "\n", encoding="utf-8")
     return doc
 
 
@@ -95,5 +96,30 @@ def datausa_income(level: str, geo_id: str, name: str, refresh: bool = False) ->
             "measures": "Household Income by Race,Household Income by Race Moe",
             "include": f"{level}:{geo_id};Race:0",
         },
+        refresh,
+    )
+
+
+def zip_boundaries(refresh: bool = False) -> dict:
+    """NYC Modified ZCTA boundaries (pri4-ifjk), 178 ZIP areas."""
+    return _snapshot("modzcta_boundaries", f"{SOCRATA}/pri4-ifjk.geojson", {"$limit": 500}, refresh, compact=True)
+
+
+def restaurants_by_zip(refresh: bool = False) -> dict:
+    """DOHMH distinct establishments per ZIP, citywide."""
+    return _snapshot(
+        "dohmh_restaurants_by_zip",
+        f"{SOCRATA}/43nn-pn8j.json",
+        {"$select": "zipcode, count(distinct camis) as n", "$group": "zipcode", "$limit": 5000},
+        refresh,
+    )
+
+
+def cultural_orgs_by_zip(refresh: bool = False) -> dict:
+    """DCLA cultural organizations per ZIP (mailing address), citywide."""
+    return _snapshot(
+        "dcla_cultural_orgs_by_zip",
+        f"{SOCRATA}/u35m-9t32.json",
+        {"$select": "postcode, count(*) as n", "$group": "postcode", "$limit": 5000},
         refresh,
     )
