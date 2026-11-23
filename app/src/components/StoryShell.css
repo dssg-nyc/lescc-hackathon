@@ -1,4 +1,4 @@
-.shell { display: grid; gap: 0.75rem; }
+.shell { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.75rem; }
 
 .shell-progress { display: flex; gap: 4px; }
 .shell-seg {

@@ -30,3 +30,16 @@ describe("SourceSheet", () => {
     expect(onClose).toHaveBeenCalled();
   });
 });
+
+describe("SourceSheet sources", () => {
+  it("lists each source with a safe external link and pull date", () => {
+    render(
+      <SourceSheet open title="CROWD" caveat="c" dataFile="foot.json" onClose={vi.fn()}
+        sources={[{ name: "NYC DOT counts", url: "https://example.org/dot", pulled: "2026-11-21" }, { name: "Deck", url: null, pulled: null }]} />,
+    );
+    const link = screen.getByRole("link", { name: "NYC DOT counts", hidden: true });
+    expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    expect(screen.getByText(/pulled 2026-11-21/)).toBeInTheDocument();
+    expect(screen.getByText("Deck")).toBeInTheDocument();
+  });
+});

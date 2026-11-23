@@ -1,0 +1,10 @@
+.ringmap { width: 100%; max-width: 320px; height: auto; display: block; overflow: visible; }
+.ring { fill: none; stroke: currentColor; stroke-opacity: 0.55; stroke-width: 1.5; stroke-dasharray: 4 5; }
+.ring-label { fill: currentColor; font-size: 12px; font-weight: 700; opacity: 0.8; }
+.ring-g { transform-origin: center; transform-box: view-box; animation: ring-draw var(--dur-draw) var(--ease-story) both; animation-delay: calc(var(--i) * 120ms + 300ms); }
+.ring-pin { animation: pin-drop 400ms var(--ease-story) both; animation-delay: calc(var(--dur-count) - 200ms); }
+.ring-pin-halo { fill: var(--accent); opacity: 0.3; }
+.ring-pin-dot { fill: var(--accent); stroke: var(--color-white); stroke-width: 2; }
+@keyframes ring-draw { from { transform: scale(0.2); opacity: 0; } }
+@keyframes pin-drop { from { opacity: 0; transform: translate(160px, 140px); } }
+@media (prefers-reduced-motion: reduce) { .ring-g, .ring-pin { animation: none; } }

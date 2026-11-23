@@ -6,3 +6,6 @@ motion.mov
 
 app/coverage/
 .venv/
+app/.env.local
+__pycache__/
+*.pyc

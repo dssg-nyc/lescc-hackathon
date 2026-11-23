@@ -89,6 +89,12 @@ export const RingsSchema = Envelope.extend({
   release: z.string(),
   rings: z.array(RingStat.extend({ miles: z.number(), jobs: Jobs.nullable().optional() })).length(3),
   income_trend: z.array(z.object({ release: z.string(), rings: z.record(RingKey, RingStat) })).nullable(),
+  area_trend: z.array(
+    z.object({
+      geography: z.string(),
+      series: z.array(z.object({ year: z.number().int(), median: z.number(), moe: z.number() })).min(2),
+    }),
+  ),
   projection: z
     .object({ year: z.number().int(), low: z.number(), high: z.number(), method: z.string() })
     .nullable(),

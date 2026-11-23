@@ -1,0 +1,76 @@
+/* Card bodies. Colors come from the card tone (App.css); numbers use the black weight. */
+.card-eyebrow { margin: 0; font-size: var(--text-xs); font-weight: var(--font-weight-black); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+.card-number { margin: 0; font-size: clamp(3.25rem, 2rem + 8vw, 6rem); line-height: 0.95; letter-spacing: var(--tracking-tight); }
+.card-number-sm { margin: 0; font-size: clamp(2rem, 1.5rem + 3vw, 3rem); line-height: 1; }
+.card-h2 { margin: 0; font-size: clamp(2.25rem, 1.5rem + 4vw, 3.5rem); font-weight: var(--font-weight-black); letter-spacing: var(--tracking-tight); line-height: 1; }
+.card-h3 { margin: 0 0 0.5rem; font-size: var(--text-xs); font-weight: var(--font-weight-black); letter-spacing: 0.12em; text-transform: uppercase; }
+.card-sub { margin: 0; font-size: var(--text-lg); line-height: 1.4; max-width: 34rem; }
+.card-meta { margin: 0; font-size: var(--text-sm); color: var(--muted); max-width: 36rem; }
+.card-unavailable { margin: 0; font-weight: var(--font-weight-bold); color: var(--muted); }
+
+/* intro */
+.intro-bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; }
+.card[data-card="intro"]::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(to top, rgb(9 9 11 / 0.92) 25%, rgb(9 9 11 / 0.35) 75%),
+    radial-gradient(120% 80% at 80% 10%, rgb(6 142 74 / 0.45), transparent 60%);
+}
+.btn-on-dark {
+  align-self: flex-start; padding: 0.75rem 1.5rem; background: var(--color-white); color: var(--color-zinc-950);
+  border-color: var(--color-white); font-weight: var(--font-weight-black);
+}
+.btn-on-dark:hover { background: var(--accent-soft); }
+
+/* crowd sparkline */
+.spark { width: 100%; height: 48px; display: block; }
+.spark rect { fill: currentColor; opacity: 0.25; transform-box: fill-box; transform-origin: bottom; animation: spark-in var(--dur-count) var(--ease-story) both; }
+.spark .spark-last { opacity: 1; fill: var(--accent); }
+@keyframes spark-in { from { transform: scaleY(0); } }
+
+/* quiz */
+.quiz-reveal { display: grid; gap: 0.5rem; }
+.quiz-verdict { margin: 0; font-size: var(--text-2xl); font-weight: var(--font-weight-black); }
+.quiz-counts { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 0; }
+.quiz-counts dt { font-size: var(--text-sm); opacity: 0.85; }
+.quiz-counts dd { margin: 0.25rem 0 0; }
+
+/* address */
+.address-block { margin: 0; overflow-wrap: anywhere; font-size: clamp(2rem, 1rem + 5vw, 3.25rem); font-weight: var(--font-weight-black); line-height: 0.95; letter-spacing: var(--tracking-tight); }
+.timeline { list-style: none; margin: 1rem 0 0; padding: 0 0 0 1rem; border-left: 2px solid rgb(255 255 255 / 0.25); display: grid; gap: 0.625rem; font-size: var(--text-sm); }
+.timeline li { position: relative; display: grid; grid-template-columns: 3rem 1fr; gap: 0.5rem; }
+.timeline li::before { content: ""; position: absolute; left: calc(-1rem - 6px); top: 0.35em; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+.timeline li[data-status="to_research"]::before { background: transparent; border: 2px dashed currentColor; }
+.timeline-year { font-weight: var(--font-weight-black); font-variant-numeric: tabular-nums; }
+.timeline-src { display: block; overflow-wrap: anywhere; color: var(--muted); font-size: var(--text-xs); }
+.timeline-tag { white-space: nowrap; font-style: normal; font-size: var(--text-xs); font-weight: var(--font-weight-black); text-transform: uppercase; letter-spacing: 0.08em; padding: 0.1rem 0.4rem; border: 1px dashed currentColor; border-radius: var(--radius); }
+
+/* rings table */
+.ring-table { width: 100%; border-collapse: collapse; font-size: var(--text-sm); font-variant-numeric: tabular-nums; }
+.ring-table th, .ring-table td { padding: 0.5rem 0.25rem; text-align: right; border-bottom: 1px solid var(--border); }
+.ring-table th:first-child, .ring-table thead th:first-child { text-align: left; }
+.ring-table thead th { font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); }
+.ring-table tbody th { font-weight: var(--font-weight-black); white-space: nowrap; }
+
+/* value */
+.value-grid { display: grid; gap: 1.25rem; }
+.value-rev { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 0 0 0.5rem; }
+.value-rev > div { padding: 0.75rem; border-radius: var(--radius); background: rgb(255 255 255 / 0.12); border-left: 4px solid; }
+.value-rev [data-tone="baseline"] { border-color: var(--color-zinc-400); }
+.value-rev [data-tone="proposal"] { border-color: var(--color-white); }
+.value-rev dt { font-size: var(--text-xs); font-weight: var(--font-weight-black); text-transform: uppercase; letter-spacing: 0.08em; }
+.value-rev dd { margin: 0.25rem 0 0; font-weight: var(--font-weight-bold); }
+.card[data-tone="green"] .rank-row[data-tone="proposal"] .rank-bar-fill { background: var(--color-white); }
+.card[data-tone="green"] .rank-row[data-tone="baseline"] .rank-bar-fill { background: var(--color-zinc-400); }
+
+/* summary */
+.recap { margin: 0; padding: 0 0 0 1.1rem; display: grid; gap: 0.375rem; font-size: var(--text-base); }
+
+/* map + text split on wide screens */
+.split { display: grid; gap: 1.25rem; align-items: center; }
+.split .ringmap { margin-inline: auto; }
+@media (min-width: 900px) { .split { grid-template-columns: 1.1fr 0.9fr; } }
+
+@media (prefers-reduced-motion: reduce) { .spark rect { animation: none; } }
+
+.trend-h { margin-top: 1rem; }

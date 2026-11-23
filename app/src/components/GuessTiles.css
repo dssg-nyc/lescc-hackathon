@@ -1,0 +1,19 @@
+.guess { display: grid; gap: 0.5rem; margin: 0; padding: 0; border: 0; }
+.guess-tile {
+  position: relative; display: flex; align-items: center; gap: 0.875rem;
+  min-height: 56px; padding: 0.75rem 1rem; border-radius: var(--radius);
+  border: 1.5px solid currentColor; cursor: pointer; font-weight: var(--font-weight-bold);
+  transition: transform var(--dur-ui) var(--ease-story), background var(--dur-ui) var(--ease-story), opacity var(--dur-ui);
+}
+.guess-tile input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: inherit; }
+.guess-tile:hover { background: rgb(255 255 255 / 0.1); }
+.guess-tile:active { transform: scale(0.98); }
+.guess-tile:has(input:focus-visible) { outline: 3px solid currentColor; outline-offset: 3px; }
+.guess-key {
+  display: grid; place-items: center; width: 28px; height: 28px; flex: none;
+  border-radius: var(--radius-full); border: 1.5px solid currentColor; font-size: var(--text-sm);
+}
+.guess-tile[data-result="answer"], .guess-tile[data-result="chosen"] { background: var(--color-white); color: var(--color-zinc-950); border-color: var(--color-white); }
+.guess-tile[data-result="wrong"] { text-decoration: line-through; opacity: 0.75; }
+.guess-tile[data-result="other"] { opacity: 0.45; cursor: default; }
+@media (prefers-reduced-motion: reduce) { .guess-tile { transition: none; } }

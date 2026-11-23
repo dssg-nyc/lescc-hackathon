@@ -1,7 +1,7 @@
 {
-  "generated": "2026-11-21",
-  "status": "partial",
-  "caveat": "Tracts crossing a ring are weighted by their share of Census blocks inside it. Ring income is a population-weighted mean of tract medians, not a true median. Trend uses overlapping 5-year windows.",
+  "generated": "2026-11-22",
+  "status": "ok",
+  "caveat": "Tracts crossing a ring are weighted by their share of Census blocks inside it. Ring income is a population-weighted mean of tract medians, not a true median. The trend is for Community District 3, in nominal dollars, from overlapping 5-year windows. The projection is a trend range, not a forecast.",
   "sources": [
     {
       "name": "U.S. Census Bureau, ACS 2024 5-year, B01003 and B19013 (via Census Reporter)",
@@ -12,6 +12,16 @@
       "name": "Census LEHD LODES 8 block crosswalk and WAC",
       "url": "https://lehd.ces.census.gov/data/",
       "pulled": "2026-11-21"
+    },
+    {
+      "name": "ACS 5-year B19013 via DataUSA: Lower East Side & Chinatown (CD3)",
+      "url": "https://datausa.io",
+      "pulled": "2026-11-22"
+    },
+    {
+      "name": "ACS 5-year B19013 via DataUSA: Manhattan",
+      "url": "https://datausa.io",
+      "pulled": "2026-11-22"
     }
   ],
   "release": "ACS 2024 5-year",
@@ -51,5 +61,142 @@
     }
   ],
   "income_trend": null,
-  "projection": null
+  "area_trend": [
+    {
+      "geography": "Lower East Side & Chinatown (CD3)",
+      "series": [
+        {
+          "year": 2013,
+          "median": 42656,
+          "moe": 1900
+        },
+        {
+          "year": 2014,
+          "median": 42873,
+          "moe": 2176
+        },
+        {
+          "year": 2015,
+          "median": 42102,
+          "moe": 2218
+        },
+        {
+          "year": 2016,
+          "median": 42223,
+          "moe": 2730
+        },
+        {
+          "year": 2017,
+          "median": 43316,
+          "moe": 2644
+        },
+        {
+          "year": 2018,
+          "median": 43705,
+          "moe": 2939
+        },
+        {
+          "year": 2019,
+          "median": 45119,
+          "moe": 2605
+        },
+        {
+          "year": 2020,
+          "median": 46083,
+          "moe": 3705
+        },
+        {
+          "year": 2021,
+          "median": 50269,
+          "moe": 3314
+        },
+        {
+          "year": 2022,
+          "median": 54111,
+          "moe": 3417
+        },
+        {
+          "year": 2023,
+          "median": 58717,
+          "moe": 4677
+        },
+        {
+          "year": 2024,
+          "median": 59411,
+          "moe": 5467
+        }
+      ]
+    },
+    {
+      "geography": "Manhattan",
+      "series": [
+        {
+          "year": 2013,
+          "median": 69659,
+          "moe": 979
+        },
+        {
+          "year": 2014,
+          "median": 71656,
+          "moe": 825
+        },
+        {
+          "year": 2015,
+          "median": 72871,
+          "moe": 1113
+        },
+        {
+          "year": 2016,
+          "median": 75513,
+          "moe": 1030
+        },
+        {
+          "year": 2017,
+          "median": 79781,
+          "moe": 1158
+        },
+        {
+          "year": 2018,
+          "median": 82459,
+          "moe": 951
+        },
+        {
+          "year": 2019,
+          "median": 86553,
+          "moe": 987
+        },
+        {
+          "year": 2020,
+          "median": 89812,
+          "moe": 1681
+        },
+        {
+          "year": 2021,
+          "median": 93956,
+          "moe": 1493
+        },
+        {
+          "year": 2022,
+          "median": 99880,
+          "moe": 1781
+        },
+        {
+          "year": 2023,
+          "median": 104553,
+          "moe": 1777
+        },
+        {
+          "year": 2024,
+          "median": 103931,
+          "moe": 1490
+        }
+      ]
+    }
+  ],
+  "projection": {
+    "year": 2029,
+    "low": 69067,
+    "high": 78230,
+    "method": "Trend extrapolation in nominal dollars: compound growth 2013-2024 (3.1%) to 2019-2024 (5.7%). Not a forecast and not an effect of the arts center."
+  }
 }

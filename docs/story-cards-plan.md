@@ -328,3 +328,14 @@ Progress bar and Playwright flow now cover 9 cards. New phase between 4 and 5: *
 ### 9.6 Complexity
 
 Shell M, data contract M, static cards S, data cards L (blocked on pulls), QA M. Cards can ship in "awaiting data" state before any pull lands.
+
+### 9.8 Status (2026-11-22)
+
+- Phases 0–4 built. 70 Vitest tests (93% statements), 14 pytest tests. Playwright walkthrough of all 9 cards at 320, 390, 1440: no overflow, no console errors.
+- Vote is stored per browser. `#results` shows "results unavailable" until Phase 4b (Vercel function) supplies the tally.
+- Waiting on: `population-image1` (intro falls back to a gradient), `CENSUS_API_KEY` (income trend and projection), food truck and arts-center revenue sources, history before 1956.
+
+### 9.9 Decisions (user, 2026-11-22)
+
+- **Vote store: Google Sheet, not Vercel.** Apps Script web app (`scripts/google-sheet-vote/`) appends `[timestamp, choice]` and returns the tally. Endpoint in `VITE_VOTE_ENDPOINT`. No server of our own, no personal data. Phase 4b (Vercel) dropped.
+- **Income trend: hardcoded from published ACS.** No Census key. ACS 5-year B19013 via DataUSA for Lower East Side & Chinatown (PUMA 3604103, CD3) and Manhattan, 2013–2024, saved as dated snapshots in `data/external/`. 2029 trend range from 2013–2024 and 2019–2024 growth rates, nominal dollars, labelled as a trend, not a forecast.
