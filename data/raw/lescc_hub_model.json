@@ -1,0 +1,215 @@
+{
+  "model": {
+    "name": "LES Visitor & Culture Hub",
+    "organization": "Lower East Side Cultural Center (LESCC)",
+    "site": {
+      "location": "Allen Street Malls, between Delancey St and Rivington St, Manhattan (Block 415, Lot 150)",
+      "building": "1930s comfort station, vacant since the 1950s",
+      "owner": "NYC Department of Parks and Recreation",
+      "procurement": {
+        "type": "Significant RFP, food service concession",
+        "term_years": 25,
+        "scoring_criteria": [
+          "operator experience",
+          "pricing",
+          "capital investment",
+          "design",
+          "sustainability"
+        ],
+        "typical_fee_structure": "greater of guaranteed minimum annual fee vs. percentage of gross receipts, ~5% annual escalation",
+        "security_deposit": "25% of highest year's guaranteed minimum fee",
+        "fee_terms_for_this_rfp": "unknown - obtain RFP document from NYC Parks / PASSPort"
+      }
+    },
+    "thesis": "Earn revenue by routing visitors to neighborhood cultural groups and businesses rather than competing with them.",
+    "revenue_streams": [
+      {
+        "id": "booking_desk",
+        "description": "Sell tours, tickets and classes for all partner organizations, and lodging at member hotels; LESCC earns a commission on each sale.",
+        "partners_served": [
+          "Tenement Museum",
+          "The Loisaida Center",
+          "Lower Eastside Girls Club",
+          "University Settlement",
+          "LES Ecology Center",
+          "galleries",
+          "Chinatown walking tours",
+          "member hotels (e.g., Nine Orchard / MML Hospitality)"
+        ],
+        "parks_fee_basis": "percentage of gross commissions",
+        "measurable_output": "referrals per partner",
+        "hotel_partnership": {
+          "two_way_referral": "Hotel concierges sell hub tours and programs to guests; the hub refers visitors, visiting artists and partner guests to member hotels for a commission",
+          "links_to": "lescc_anthropology_protection_membership.json > membership (capital members)"
+        }
+      },
+      {
+        "id": "maker_shop",
+        "description": "Consignment sales of work by local artists and makers, plus partner merchandise.",
+        "content": [
+          "Chinese crafts",
+          "Puerto Rican and Dominican art",
+          "LES history books",
+          "partner merchandise"
+        ],
+        "parks_fee_basis": "percentage of gross sales"
+      },
+      {
+        "id": "rotating_storefront",
+        "description": "A different partner group runs the front room each month as a pop-up; LESCC takes a revenue share.",
+        "examples": [
+          "Lunar New Year market",
+          "Loisaida bomba night",
+          "LES Yearbook exhibition",
+          "artist shows"
+        ],
+        "parks_fee_basis": "percentage of gross"
+      },
+      {
+        "id": "rotating_food_partner",
+        "description": "Neighborhood cafes and bakeries rotate through the food counter instead of LESCC operating its own cafe. Formal basis for RFP food-service compliance.",
+        "candidate_partners": [
+          "Shelly's",
+          "Mean Bean Cafe",
+          "Le Lotus Bleu Cafe",
+          "Good Thanks Cafe",
+          "Russ & Daughters Cafe",
+          "Congee Village",
+          "Porto Rico Coffee"
+        ],
+        "parks_fee_basis": "percentage of gross food sales"
+      },
+      {
+        "id": "evening_rentals",
+        "description": "Small performances, readings and private events.",
+        "parks_fee_basis": "percentage of gross rental income"
+      }
+    ],
+    "public_amenity": {
+      "restrooms": "Open to the public on published hours, operated and maintained by LESCC"
+    },
+    "value_to_parks": {
+      "cash": "Guaranteed minimum annual fee plus percentage of gross across all streams",
+      "avoided_costs": [
+        "restoration capital raised by LESCC",
+        "restroom operation",
+        "mall maintenance"
+      ],
+      "risk_reduction": "Fee backed by coalition pledges; food-only model has stalled since the 2016 RFP"
+    },
+    "value_capture_mechanism": {
+      "short_term": "Coalition fee-guarantee fund: area businesses and property owners pledge to guarantee Parks' minimum fee and security deposit",
+      "backstop": "Lower East Side BID (mandatory assessment; covers Allen St between Houston and Canal)",
+      "long_term": "Park Improvement District pilot (proposed citywide, not yet established)",
+      "member_benefits": [
+        "listing on cultural map",
+        "visitor passport / QR offers",
+        "event tie-ins",
+        "rotating food counter slot",
+        "annual uplift report"
+      ]
+    },
+    "data_loop": {
+      "baseline_metrics": [
+        "business openings/closings (DOHMH, license data)",
+        "storefront vacancy",
+        "foot traffic counts",
+        "event attendance"
+      ],
+      "ongoing_metrics": [
+        "bookings and referrals per partner",
+        "shop sales to local makers",
+        "restroom visits",
+        "program attendance"
+      ],
+      "reporting": "Annual uplift report to coalition members and Parks"
+    },
+    "compliance_risk": {
+      "issue": "RFP is for a food service concession; a hub without food may be non-responsive.",
+      "mitigation": "Make the rotating food counter the formal concession, with the hub built around it.",
+      "verify_with": "Ian McDermott (NYS procurement & administrative regulations, Community Advisory Team)"
+    }
+  },
+  "context_data": {
+    "sources": {
+      "food_businesses": "NYC Open Data - DOHMH Restaurant Inspection Results (43nn-pn8j), active = inspected since 2024-11-01",
+      "cultural_orgs": "NYC Open Data - DCLA Cultural Organizations (u35m-9t32)",
+      "restrooms": "NYC Open Data - Public Restrooms (i7jb-7jku)",
+      "noise": "NYC Open Data - 311 Service Requests (erm2-nwe9), Nov 2023 to Nov 2026",
+      "demographics": "US Census ACS 2020-2024 5-year, via Census Reporter; rings built from whole census tracts"
+    },
+    "food_vs_culture": {
+      "within_200m": {
+        "food_businesses": 89,
+        "cultural_orgs": 5
+      },
+      "within_400m": {
+        "food_businesses": 321,
+        "cultural_orgs": 36,
+        "coffee_tea": 32,
+        "bakeries": 17
+      },
+      "within_800m": {
+        "food_businesses": 958,
+        "cultural_orgs": 86
+      },
+      "food_density_per_km2": {
+        "site_400m": 640,
+        "manhattan_avg": 180,
+        "nyc_avg": 34
+      },
+      "coffee_shops_within_130m": 6
+    },
+    "restrooms": {
+      "site_status": "Listed as 'Allen Street Malls - Not Operational'",
+      "nearest_operational_m": 220,
+      "nearest_operational_name": "Sara D. Roosevelt Park"
+    },
+    "noise_311_within_400m": {
+      "total_noise_complaints": 13214,
+      "vehicle_music": 590,
+      "vehicle_horn": 162,
+      "food_vendor_enforcement": 99,
+      "food_establishment_rodents_garbage": 126
+    },
+    "demographics_400m": {
+      "population": 24710,
+      "households": 12264,
+      "living_alone_pct": 48,
+      "roommates_pct": 14,
+      "married_couple_pct": 26,
+      "other_family_pct": 12,
+      "households_with_children_pct": 10,
+      "households_with_65plus_pct": 30,
+      "seniors_living_alone_pct": 13,
+      "poverty_pct": 21,
+      "foreign_born_pct": 44,
+      "chinese_residents": 8901,
+      "chinese_speakers_limited_english": 6120,
+      "hispanic_residents": 3557,
+      "dominican": 1320,
+      "puerto_rican": 943,
+      "white_non_hispanic_pct": 33,
+      "tract_median_income_range_usd": [
+        35875,
+        90469
+      ]
+    },
+    "demographics_800m": {
+      "population": 75228,
+      "households": 37702,
+      "households_with_children_pct": 12,
+      "households_with_65plus_pct": 32,
+      "limited_english_households_pct": 20
+    },
+    "engagement_radius": {
+      "stores_and_close_engagement_m": 400,
+      "service_area_m": 800
+    }
+  },
+  "coalition_gaps": [
+    "Park-facing ground-floor businesses (none on current Community Advisory Team)",
+    "Chinese community representation (36% of residents within 400m; none on team)",
+    "Food vendors (current opposition; convert to rotating food partners)"
+  ]
+}
