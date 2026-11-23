@@ -71,7 +71,7 @@ export const CARDS: readonly Card[] = [
     label: "HOTSPOT",
     headline: "The address.",
     caveat: "History points stay 'to research' until each has a source.",
-    tone: "dark",
+    tone: "light",
     dataFile: "site.json",
   },
   {

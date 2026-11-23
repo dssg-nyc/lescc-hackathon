@@ -123,6 +123,21 @@ export const PointsSchema = Envelope.extend({
   cultural_orgs: z.array(LngLat),
 });
 
+export const ZipsSchema = Envelope.extend({
+  highlight: z.string().regex(/^\d{5}$/),
+  zips: z
+    .array(
+      z.object({
+        zip: z.string(),
+        polygons: z.array(z.array(z.array(z.array(z.number()).length(2)))),
+        restaurants: count,
+        cultural: count,
+        ratio: num,
+      }),
+    )
+    .min(1),
+});
+
 /** Response of the vote API (Google Sheet). */
 export const VotesSchema = z.object({
   food_truck: z.number().int().nonnegative(),
@@ -137,6 +152,7 @@ export const SCHEMAS = {
   "rings.json": RingsSchema,
   "value.json": ValueSchema,
   "points.json": PointsSchema,
+  "zips.json": ZipsSchema,
 } as const;
 
 export type DataFile = keyof typeof SCHEMAS;

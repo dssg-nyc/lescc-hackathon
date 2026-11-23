@@ -47,7 +47,7 @@ describe("cards with real data", () => {
     render(<CardBody card={card("quiz")} {...props} />);
     expect(screen.queryByTestId("countup-final")).toBeNull();
     fireEvent.click(screen.getByRole("radio", { name: /art and cultural/i }));
-    expect(screen.getAllByTestId("countup-final").map((n) => n.textContent)).toEqual(["622", "58"]);
+    expect(screen.getAllByTestId("countup-final").map((n) => n.textContent)).toEqual(["622", "60"]);
     expect(screen.getByText(/not quite/i)).toBeInTheDocument();
     expect(props.onAnswered).toHaveBeenCalled();
   });

@@ -1,28 +1,29 @@
 import { useMemo } from "react";
-import { StreetMap } from "../components/StreetMap";
+import { ZipMap } from "../components/ZipMap";
+import type { LngLat } from "../lib/geo";
 import { TrendChart } from "../components/TrendChart";
 import type { StoryData } from "../data/schema";
 import { fmtInt, fmtUsd } from "./format";
 
 interface DemographicsCardProps {
   data: StoryData["rings.json"];
-  points: StoryData["points.json"] | null;
+  zips: StoryData["zips.json"] | null;
+  center: LngLat;
 }
 
-export function DemographicsCard({ data, points }: DemographicsCardProps) {
+const VIEW_MILES = 3.2;
+
+export function DemographicsCard({ data, zips, center }: DemographicsCardProps) {
   const rings = useMemo(() => data.rings.map((r) => r.miles), [data.rings]);
-  const dots = useMemo(
-    () => (points ? { restaurants: points.restaurants, cultural: points.cultural_orgs } : undefined),
-    [points],
-  );
   const [main, ref] = data.area_trend;
   const first = main?.series[0];
   const latest = main?.series[main.series.length - 1];
   return (
     <div className="map-card">
-      {points && (
-        <StreetMap center={points.site} rings={rings} points={dots}
-          title="Map: rings at 0.5, 1, and 2 miles around the site, with restaurants and cultural organizations" />
+      {zips && (
+        <ZipMap zips={zips.zips} highlight={zips.highlight} center={center} radiusMiles={VIEW_MILES} mode="choropleth" rings={rings}
+          legend="Restaurants per cultural organization"
+          title={`Map: ZIP codes shaded by restaurants per cultural organization, ZIP ${zips.highlight} outlined, with rings at 0.5, 1, and 2 miles`} />
       )}
       <div>
         <table className="ring-table">

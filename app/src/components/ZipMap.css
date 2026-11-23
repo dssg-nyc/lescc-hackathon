@@ -1,0 +1,53 @@
+/* Line-art ZIP map. Colors follow the card tone via currentColor. */
+.zipmap { margin: 0 -1.5rem; display: grid; gap: 0.5rem; }
+.zipmap svg {
+  width: 100%; height: auto; aspect-ratio: 16 / 10; display: block;
+  -webkit-mask-image: radial-gradient(120% 100% at 50% 50%, #000 55%, transparent 100%);
+  mask-image: radial-gradient(120% 100% at 50% 50%, #000 55%, transparent 100%);
+}
+.zip { fill: none; stroke: currentColor; stroke-opacity: 0.35; stroke-width: 1.2; vector-effect: non-scaling-stroke; }
+.zip-highlight { stroke-opacity: 1; stroke-width: 2.5; }
+.zipmap[data-mode="outline"] .zip-highlight { fill: currentColor; fill-opacity: 0.08; }
+
+/* choropleth: green ramp, light to dark */
+.zipmap[data-mode="choropleth"] .zip { stroke: var(--surface); stroke-opacity: 1; stroke-width: 0.8; }
+.zipmap { --bin0: #e3f4ea; --bin1: #b4e1c6; --bin2: #6cc394; --bin3: #1f9b5c; --bin4: #0b5d34; }
+.zipmap path[data-bin="none"] { fill: none; }
+.zipmap [data-bin="0"] { fill: var(--bin0); background: var(--bin0); }
+.zipmap [data-bin="1"] { fill: var(--bin1); background: var(--bin1); }
+.zipmap [data-bin="2"] { fill: var(--bin2); background: var(--bin2); }
+.zipmap [data-bin="3"] { fill: var(--bin3); background: var(--bin3); }
+.zipmap [data-bin="4"] { fill: var(--bin4); background: var(--bin4); }
+.zipmap[data-mode="choropleth"] .zip[data-bin="none"] { stroke: currentColor; stroke-opacity: 0.25; }
+.zipmap[data-mode="choropleth"] .zip-highlight { stroke: var(--fg); stroke-width: 3; }
+
+.dot-rest { fill: currentColor; opacity: 0.35; }
+.dot-cult { fill: var(--accent); stroke: var(--surface); stroke-width: 1; }
+
+.zip-ring { fill: none; stroke: var(--fg); stroke-width: 1.5; stroke-dasharray: 6 6; vector-effect: non-scaling-stroke; }
+.zip-ring-label { fill: var(--fg); font-size: 15px; font-weight: 900; paint-order: stroke; stroke: var(--surface); stroke-width: 4px; }
+
+.zip-pin-head { fill: var(--accent); stroke: var(--fg); stroke-width: 2.5; }
+.zip-pin-eye { fill: var(--surface); }
+.zip-pin-base { fill: var(--fg); }
+
+/* motion: zoom out from the pin over the count-up window; rings draw; pin drops last */
+.zipmap-zoom { transform-box: view-box; transform-origin: var(--ox) var(--oy); animation: zip-zoom var(--dur-count) var(--ease-story) both; }
+.zipmap[data-mode="choropleth"] .zipmap-zoom { animation-name: zip-fade; }
+.zip-ring-g { transform-box: view-box; transform-origin: var(--ox) var(--oy); animation: zip-ring var(--dur-draw) var(--ease-story) both; animation-delay: calc(var(--i) * 140ms + 400ms); }
+.zip-pin { animation: zip-pin 450ms var(--ease-story) both; animation-delay: calc(var(--dur-count) - 250ms); }
+@keyframes zip-zoom { from { transform: scale(2.4); opacity: 0.3; } }
+@keyframes zip-fade { from { opacity: 0; } }
+@keyframes zip-ring { from { transform: scale(0.3); opacity: 0; } }
+@keyframes zip-pin { from { opacity: 0; translate: 0 -24px; } }
+
+.zipmap-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.375rem 0.75rem; padding: 0 1.5rem; font-size: var(--text-xs); font-weight: var(--font-weight-black); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.zipmap-ramp { display: inline-flex; }
+.zipmap-ramp i { display: inline-block; width: 22px; height: 10px; }
+.zipmap-ends { display: none; }
+.key { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 0.25rem; vertical-align: middle; }
+.key-rest { background: currentColor; opacity: 0.4; }
+.key-cult { background: var(--accent); }
+
+@media (prefers-reduced-motion: reduce) { .zipmap-zoom, .zip-ring-g, .zip-pin { animation: none; } }
+.zipmap-scale { display: inline-flex; align-items: center; gap: 0.375rem; font-weight: var(--font-weight-bold); text-transform: none; letter-spacing: 0; }

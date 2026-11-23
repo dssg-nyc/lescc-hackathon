@@ -339,3 +339,10 @@ Shell M, data contract M, static cards S, data cards L (blocked on pulls), QA M.
 
 - **Vote store: Google Sheet, not Vercel.** Apps Script web app (`scripts/google-sheet-vote/`) appends `[timestamp, choice]` and returns the tally. Endpoint in `VITE_VOTE_ENDPOINT`. No server of our own, no personal data. Phase 4b (Vercel) dropped.
 - **Income trend: hardcoded from published ACS.** No Census key. ACS 5-year B19013 via DataUSA for Lower East Side & Chinatown (PUMA 3604103, CD3) and Manhattan, 2013–2024, saved as dated snapshots in `data/external/`. 2029 trend range from 2013–2024 and 2019–2024 growth rates, nominal dollars, labelled as a trend, not a forecast.
+
+### 9.10 Maps (user, 2026-11-23)
+
+- MapLibre street tiles (PR #15) replaced: too dark and busy next to the 311 Wrapped references. Maps are now line-art SVG from NYC MODZCTA ZIP outlines (`zips.json`), no tiles, no map library.
+- `#address` (reference image 11): light card, ZIP outlines, 10002 filled, pin on 76 Delancey, sample dots (every 3rd restaurant, all cultural organizations).
+- `#demographics` (reference image 10): ZIPs shaded by restaurants per cultural organization (quantile green ramp), 10002 outlined, 0.5/1/2 mi rings.
+- Quiz now uses the same citywide per-ZIP counts as the map: 622 restaurants, 60 cultural organizations (was 58 from a Manhattan-only borough filter).

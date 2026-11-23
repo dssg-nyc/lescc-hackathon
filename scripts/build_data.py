@@ -28,6 +28,7 @@ from lescc_data.geo import RINGS_MI, SITE, miles_from_site, points_within
 from lescc_data.quiz import build_quiz
 from lescc_data.rings import ring_totals, tract_weights
 from lescc_data.trend import project_range
+from lescc_data.zips import ratio_by_zip, simplify_features
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -102,8 +103,11 @@ def build_foot() -> dict:
 def build_quiz_card(refresh: bool) -> tuple[dict, dict, dict]:
     rest = fetch.restaurants_manhattan(refresh)
     orgs = fetch.cultural_orgs_manhattan(refresh)
-    n_rest = sum(1 for r in rest["data"] if (r.get("zipcode") or "").startswith(ZIP))
-    n_orgs = sum(1 for r in orgs["data"] if (r.get("postcode") or "").startswith(ZIP))
+    # Same per-ZIP counts as the choropleth (zips.json), so every card agrees.
+    by_rest = fetch.restaurants_by_zip(refresh)
+    by_orgs = fetch.cultural_orgs_by_zip(refresh)
+    n_rest = sum(int(r["n"]) for r in by_rest["data"] if str(r.get("zipcode") or "")[:5] == ZIP)
+    n_orgs = sum(int(r["n"]) for r in by_orgs["data"] if str(r.get("postcode") or "")[:5] == ZIP)
     sources = [
         src("NYC DOHMH Restaurant Inspection Results (43nn-pn8j), distinct establishments", "https://data.cityofnewyork.us/d/43nn-pn8j", rest["pulled"]),
         src("NYC DCLA Cultural Organizations (u35m-9t32)", "https://data.cityofnewyork.us/d/u35m-9t32", orgs["pulled"]),
@@ -315,6 +319,33 @@ def build_points(rest: dict, orgs: dict) -> dict:
     )
 
 
+ZIP_TOLERANCE_DEG = 0.0002  # ~20 m; keeps outlines crisp at card size
+ZIP_DIGITS = 4  # ~10 m
+
+
+def build_zips(refresh: bool) -> dict:
+    shapes = fetch.zip_boundaries(refresh)
+    rest = fetch.restaurants_by_zip(refresh)
+    orgs = fetch.cultural_orgs_by_zip(refresh)
+    rest_n = {str(r.get("zipcode", ""))[:5]: int(r["n"]) for r in rest["data"] if r.get("zipcode")}
+    org_n: dict[str, int] = {}
+    for r in orgs["data"]:
+        z = str(r.get("postcode") or "")[:5]
+        if z:
+            org_n[z] = org_n.get(z, 0) + int(r["n"])
+    zips = simplify_features(shapes["data"]["features"], ZIP_TOLERANCE_DEG, ZIP_DIGITS)
+    stats = ratio_by_zip([z["zip"] for z in zips], rest_n, org_n)
+    return envelope(
+        "ok",
+        "Restaurants per cultural organization by ZIP. Restaurants have a health inspection on record; cultural organizations are DCLA-listed groups by mailing address. ZIPs with no listed organization show no ratio.",
+        [src("NYC Modified ZCTA boundaries (pri4-ifjk)", "https://data.cityofnewyork.us/d/pri4-ifjk", shapes["pulled"]),
+         src("NYC DOHMH Restaurant Inspection Results (43nn-pn8j)", "https://data.cityofnewyork.us/d/43nn-pn8j", rest["pulled"]),
+         src("NYC DCLA Cultural Organizations (u35m-9t32)", "https://data.cityofnewyork.us/d/u35m-9t32", orgs["pulled"])],
+        highlight=ZIP,
+        zips=[{**z, **stats[z["zip"]]} for z in zips],
+    )
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--refresh", action="store_true", help="re-pull public API snapshots")
@@ -332,6 +363,7 @@ def main() -> None:
     write("rings.json", build_rings(args.refresh, blocks, jobs_latest))
     write("value.json", build_value(jobs_trend, rest, orgs))
     write("points.json", build_points(rest, orgs), compact=True)
+    write("zips.json", build_zips(args.refresh), compact=True)
 
     for old in OLD_FILES:
         path = OUT_DIR / old

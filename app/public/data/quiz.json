@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-22",
+  "generated": "2026-11-23",
   "status": "ok",
   "caveat": "Restaurants = establishments with a health inspection on record. Cultural organizations = groups on the DCLA list, by mailing address. Not every venue is listed.",
   "sources": [
@@ -24,9 +24,9 @@
     {
       "id": "cultural",
       "label": "Art and cultural organizations",
-      "count": 58
+      "count": 60
     }
   ],
   "answer": "restaurants",
-  "ratio": 10.7
+  "ratio": 10.4
 }

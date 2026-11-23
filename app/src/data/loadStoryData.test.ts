@@ -21,7 +21,7 @@ describe("loadStoryData", () => {
     await loadStoryData();
     const urls = (fetch as unknown as ReturnType<typeof vi.fn>).mock.calls.map((c) => c[0]);
     expect(urls).toContain("/data/foot.json");
-    expect(urls).toHaveLength(7);
+    expect(urls).toHaveLength(8);
   });
 
   it("returns parsed data for valid files", async () => {

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-11-22",
+  "generated": "2026-11-23",
   "status": "ok",
   "caveat": "Tracts crossing a ring are weighted by their share of Census blocks inside it. Ring income is a population-weighted mean of tract medians, not a true median. The trend is for Community District 3, in nominal dollars, from overlapping 5-year windows. The projection is a trend range, not a forecast.",
   "sources": [
