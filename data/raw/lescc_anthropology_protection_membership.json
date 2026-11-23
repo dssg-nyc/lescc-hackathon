@@ -1,0 +1,595 @@
+{
+  "file": "lescc_anthropology_protection_membership",
+  "version": "0.1-draft",
+  "organization": "Lower East Side Cultural Center (LESCC)",
+  "companion_file": "lescc_hub_model.json",
+  "summary": {
+    "anthropology": "Community-owned living archive of the neighborhood's cultures, recorded by paid community ethnographers; shapes programming and identifies who and what needs protection.",
+    "protection": "The plan produces neighborhood value; part of that value is committed, in advance, to protecting the residents, businesses and cultural practitioners that rising value puts at risk. Promotion and protection are coupled: the hub only scales what draws demand when protection is funded and the displacement indicators are stable.",
+    "membership": "A two-sided district partnership in which social members and capital members hold equal standing, and protection of vulnerable residents and legacy businesses is a core purpose of the district rather than something it leaves out."
+  },
+  "anthropology": {
+    "communities": [
+      {
+        "id": "chinese",
+        "description": "Chinese immigrant families and elders; largest group in the 400 m ring",
+        "residents_400m": 8901,
+        "limited_english_speakers": 6120,
+        "languages": [
+          "Cantonese",
+          "Mandarin",
+          "Fuzhounese (verify)"
+        ],
+        "anchors_on_site": [
+          "Chinese Alliance Church (121 Allen St)",
+          "Grace Church (135 Allen St)",
+          "Congee Village (100 Allen St)"
+        ],
+        "current_representation_on_advisory_team": "none"
+      },
+      {
+        "id": "loisaida",
+        "description": "Puerto Rican and Dominican community; historic Loisaida",
+        "residents_400m": {
+          "hispanic_total": 3557,
+          "dominican": 1320,
+          "puerto_rican": 943
+        },
+        "languages": [
+          "Spanish",
+          "English"
+        ],
+        "anchors": [
+          "The Loisaida Center",
+          "El Caribe HDFC (161 Allen St)"
+        ],
+        "current_representation_on_advisory_team": [
+          "Alejandro Epifanio",
+          "Kanielle Hernandez",
+          "Lilah Mejia"
+        ]
+      },
+      {
+        "id": "jewish_heritage",
+        "description": "Historic Jewish immigrant Lower East Side; living institutions and legacy businesses",
+        "anchors": [
+          "Tenement Museum (81 Delancey St)",
+          "Russ & Daughters Cafe (127 Orchard St)"
+        ],
+        "current_representation_on_advisory_team": [
+          "Kat Lloyd"
+        ]
+      },
+      {
+        "id": "artists",
+        "description": "Artists, galleries and makers; population declining due to rents",
+        "current_representation_on_advisory_team": [
+          "Claudia Gold",
+          "Erik Foss",
+          "Destiny Mata",
+          "Louis Shannon"
+        ]
+      },
+      {
+        "id": "youth",
+        "description": "Children and teens (10% of households in 400 m ring have children)",
+        "anchors": [
+          "Lower Eastside Girls Club",
+          "University Settlement",
+          "Emma Lazarus High School",
+          "LES Yearbook"
+        ],
+        "current_representation_on_advisory_team": [
+          "Jenny Dembrow",
+          "Melissa Asae",
+          "Alison Stumpf"
+        ]
+      },
+      {
+        "id": "elders_living_alone",
+        "description": "Cross-cutting: 30% of households include someone 65+; 13% are seniors living alone",
+        "anchors": [
+          "University Settlement Neighborhood Center (189 Allen St)"
+        ]
+      },
+      {
+        "id": "food_makers",
+        "description": "Local food businesses treated as cultural practitioners (foodways), not only as vendors",
+        "examples": [
+          "Congee Village",
+          "Empanada Mama",
+          "Russ & Daughters Cafe",
+          "neighborhood bakeries"
+        ],
+        "note": "Reframes food-vendor opposition: generic concessions are unnecessary; local foodways are culture."
+      }
+    ],
+    "living_anthropology": {
+      "ethnographers": {
+        "model": "Paid community ethnographers, at least one per community, recruited and supervised with partner organizations",
+        "count": "TBD (minimum 6)",
+        "training": "Oral history and consent practice; partner candidates include the Cooper Square CLT Oral History Project (Parsons Housing Justice Lab) and the Tenement Museum"
+      },
+      "records": [
+        {
+          "type": "oral_histories",
+          "description": "Recorded life and migration stories, in the speaker's language"
+        },
+        {
+          "type": "cultural_calendar",
+          "description": "Festivals, religious observances, social-club and family events across all communities"
+        },
+        {
+          "type": "living_places_map",
+          "description": "Places where culture is practiced: churches, mahjong parlors, botanicas, bakeries, social clubs, galleries"
+        },
+        {
+          "type": "foodways",
+          "description": "Recipes, food businesses, supply chains and the families behind them"
+        },
+        {
+          "type": "legacy_business_register",
+          "description": "Businesses community members identify as culturally essential; feeds the protection layer"
+        }
+      ],
+      "uses": [
+        "Programs the rotating storefront and booking desk from evidence of how people actually live",
+        "Supplies the legacy-business and at-risk lists for protection",
+        "Provides public-value evidence for the bid and for annual reporting"
+      ]
+    },
+    "data_sovereignty": {
+      "ownership": "Each community owns its records; LESCC is custodian, not owner",
+      "consent": "Informed consent per record, revocable; tiers: public, community-only, private",
+      "prohibited_uses": [
+        "real-estate marketing",
+        "branding for development",
+        "sale or licensing of records without community approval"
+      ],
+      "languages": [
+        "English",
+        "Cantonese",
+        "Mandarin",
+        "Spanish"
+      ]
+    }
+  },
+  "protection": {
+    "problem": "Successful cultural reactivation raises foot traffic and land values, which raises rents and eviction pressure on low-income residents, legacy businesses and artists. Displacement shifts costs elsewhere in the city (shelter, health, lost work and community ties).",
+    "baseline_400m": {
+      "population": 24710,
+      "poverty_pct": 21,
+      "households_with_65plus_pct": 30,
+      "limited_english_households_pct": 24,
+      "tract_median_income_range_usd": [
+        35875,
+        90469
+      ],
+      "executed_evictions": {
+        "source": "NYC Open Data - Evictions (6z8x-wfk4), marshal-executed only; undercounts informal displacement",
+        "residential": {
+          "2022": 6,
+          "2023": 21,
+          "2024": 14,
+          "2025": 10,
+          "2026_ytd": 8
+        },
+        "commercial": {
+          "2022": 2,
+          "2023": 3,
+          "2024": 3,
+          "2025": 4,
+          "2026_ytd": 7
+        }
+      },
+      "protected_housing_on_block": [
+        "El Caribe HDFC (161 Allen St)",
+        "167-169 Allen St HDFC",
+        "46-50 Rivington St HDFC",
+        "Rivington HDFC (87 Rivington St)"
+      ]
+    },
+    "baseline_800m": {
+      "executed_evictions": {
+        "residential": {
+          "2022": 25,
+          "2023": 75,
+          "2024": 59,
+          "2025": 49,
+          "2026_ytd": 51
+        },
+        "commercial": {
+          "2022": 18,
+          "2023": 18,
+          "2024": 15,
+          "2025": 12,
+          "2026_ytd": 13
+        }
+      }
+    },
+    "mechanisms": [
+      {
+        "id": "continuity_fund",
+        "name": "Cultural Continuity & Anti-Displacement Fund",
+        "funding": [
+          "Fixed share of coalition pledges (parameter: protection_share_of_pledges)",
+          "Fixed share of hub gross receipts (parameter: protection_share_of_gross)",
+          "Grants and philanthropy"
+        ],
+        "uses": [
+          "Emergency rent-arrears grants for at-risk households",
+          "Lease-renewal and relocation-avoidance support for legacy businesses",
+          "Stipends for cultural practitioners and community ethnographers",
+          "Contributions toward permanent affordability (land trust acquisitions)"
+        ]
+      },
+      {
+        "id": "tenant_navigation",
+        "name": "Tenant help desk at the hub",
+        "description": "Multilingual referral to existing protections: NYC Right to Counsel (free eviction defense for eligible tenants), rent-stabilization status checks, HPD complaints, legal-aid partners",
+        "languages": [
+          "Cantonese",
+          "Mandarin",
+          "Spanish",
+          "English"
+        ]
+      },
+      {
+        "id": "early_warning",
+        "name": "Building-level displacement early-warning system",
+        "signals": [
+          {
+            "signal": "eviction filings and executions",
+            "source": "NYC Open Data Evictions; court filing data"
+          },
+          {
+            "signal": "housing code violations, heat/hot-water complaints",
+            "source": "HPD Violations; 311"
+          },
+          {
+            "signal": "alteration/demolition permits",
+            "source": "DOB permits"
+          },
+          {
+            "signal": "ownership transfers and sale prices",
+            "source": "ACRIS"
+          },
+          {
+            "signal": "storefront vacancy and legacy-business closures",
+            "source": "DOHMH/DCWP licenses; legacy_business_register"
+          }
+        ],
+        "response": "Flagged buildings trigger outreach by the tenant help desk and community ethnographers"
+      },
+      {
+        "id": "permanent_affordability",
+        "name": "Land and housing permanence",
+        "description": "Partner with the Cooper Square Community Land Trust (oldest active CLT in NYC, on the LES) to pursue land-trust acquisition of at-risk buildings; support existing HDFC co-ops on the block",
+        "partners": [
+          "Cooper Square CLT / Mutual Housing Association",
+          "HDFC boards on Allen and Rivington"
+        ]
+      },
+      {
+        "id": "good_neighbor_pledge",
+        "name": "Coalition membership conditions",
+        "description": "Property-owner members of the coalition commit to no tenant harassment and good-faith renewal terms for legacy commercial tenants as a condition of membership benefits",
+        "enforcement": "Voluntary; membership and benefits withdrawn for breach"
+      },
+      {
+        "id": "policy_asks",
+        "name": "Public policy asks",
+        "items": [
+          "Extend or confirm Certification of No Harassment (CONH) coverage for buildings in Community District 3 (verify current coverage)",
+          "Council discretionary funding for anti-displacement legal services in the ring",
+          "Pilot a Park Improvement District with a mandatory protection share"
+        ]
+      }
+    ],
+    "coupling_rule": {
+      "description": "Promotion scales only with protection. Tourism-facing marketing and new revenue lines expand only when the continuity fund meets its target and displacement indicators are stable or improving.",
+      "conditions_for_expansion": [
+        "continuity_fund_balance >= target",
+        "executed residential evictions in 400 m ring not above baseline average",
+        "no increase in legacy-business closures year over year"
+      ],
+      "pause_trigger": "If conditions fail for two consecutive quarters, the cultural council may pause new promotional campaigns and redirect surplus to the continuity fund"
+    },
+    "city_level_case": {
+      "argument": "Preventing displacement saves public money: rehousing and shelter cost far more than keeping people housed.",
+      "reference_figures": {
+        "family_shelter_cost_per_day_usd": 270,
+        "cityfheps_voucher_cost_per_day_usd": 54,
+        "source": "Win NYC, 'More Than a Moral Choice' (Feb 2026)"
+      },
+      "link_to_parks": "The general fund that receives Parks concession fees also pays shelter costs; protection is a fiscal benefit to the same budget."
+    },
+    "parameters": {
+      "protection_share_of_pledges": "TBD (proposed range 20-30%)",
+      "protection_share_of_gross": "TBD (proposed range 2-5%)",
+      "continuity_fund_target_usd": "TBD",
+      "review_cycle": "quarterly indicators; annual public report"
+    }
+  },
+  "membership": {
+    "working_name": "TBD (two-sided social + capital district partnership)",
+    "difference_from_standard_bid": {
+      "standard_bid": {
+        "funding": "Mandatory assessment on property owners",
+        "governance": "Board weighted to property owners; residents and tenants hold minority seats",
+        "purpose": "Sanitation, marketing, streetscape, business attraction"
+      },
+      "this_model": {
+        "funding": "Capital pledges scaled to capacity plus social contributions valued as membership dues",
+        "governance": "Equal capital and social halves; resident majority on protection decisions",
+        "purpose": "Cultural continuity, protection of residents and legacy businesses, and shared economic uplift"
+      }
+    },
+    "capital_self_interest_case": {
+      "summary": "Capital members invest in the district's distinctiveness; displacement of the people who create that distinctiveness erodes the asset they paid for.",
+      "anchor_example": {
+        "member": "Nine Orchard (MML Hospitality)",
+        "context": "Purchased for $92M in August 2025; Austin-based restaurant and hotel group; first East Coast project",
+        "interest": "Hotel brand value depends on an authentic, living Lower East Side"
+      }
+    },
+    "membership_classes": [
+      {
+        "class": "capital",
+        "who": [
+          "hotels",
+          "property owners",
+          "larger businesses",
+          "developers"
+        ],
+        "contribution": "Cash pledges on a capacity-scaled schedule",
+        "candidates": [
+          "Nine Orchard / MML Hospitality",
+          "88 Allen St hotel",
+          "Allen, Delancey and Rivington property owners",
+          "Porto Rico Coffee",
+          "Essex Crossing / Essex Market (verify)"
+        ]
+      },
+      {
+        "class": "social",
+        "who": [
+          "residents",
+          "tenant associations",
+          "HDFC co-ops",
+          "legacy businesses",
+          "cultural organizations",
+          "congregations",
+          "artists"
+        ],
+        "contribution": "Time, programming, cultural work and ethnography, valued in time-credits; small cash dues optional",
+        "candidates": [
+          "El Caribe HDFC",
+          "167-169 Allen St HDFC",
+          "46-50 Rivington St HDFC",
+          "Rivington HDFC",
+          "Chinese Alliance Church",
+          "Grace Church",
+          "The Loisaida Center",
+          "Tenement Museum",
+          "Lower Eastside Girls Club",
+          "University Settlement",
+          "LES Ecology Center",
+          "legacy food makers (Congee Village, Empanada Mama, neighborhood bakeries)",
+          "community artists"
+        ]
+      }
+    ],
+    "pledge_schedule": {
+      "principle": "Progressive: contribution scales with capacity; every member counts as a full member regardless of amount",
+      "capital_tiers": [
+        {
+          "tier": "anchor",
+          "basis": "Large hotels and property portfolios",
+          "annual_pledge_usd": "TBD"
+        },
+        {
+          "tier": "major",
+          "basis": "Mid-size property owners and multi-location businesses",
+          "annual_pledge_usd": "TBD"
+        },
+        {
+          "tier": "neighborhood",
+          "basis": "Single-storefront businesses and small owners",
+          "annual_pledge_usd": "TBD (nominal)"
+        }
+      ],
+      "social_contribution": {
+        "unit": "time_credit",
+        "definition": "One hour of documented cultural, programming, ethnographic or volunteer work for the district",
+        "valuation_method": "TBD (e.g., published volunteer-hour value or local wage benchmark)",
+        "counts_toward": "Membership standing and governance rights, not cash obligations"
+      },
+      "protection_share": {
+        "rule": "A fixed share of every capital pledge goes to the Cultural Continuity & Anti-Displacement Fund before any other allocation",
+        "share": "TBD (proposed 20-30%)",
+        "links_to": "protection.mechanisms.continuity_fund"
+      }
+    },
+    "allocation_waterfall": [
+      {
+        "order": 1,
+        "use": "Continuity & Anti-Displacement Fund (protection share)"
+      },
+      {
+        "order": 2,
+        "use": "Parks fee guarantee (minimum annual fee and security deposit for the Allen Street concession)"
+      },
+      {
+        "order": 3,
+        "use": "Hub operations and community ethnographer stipends"
+      },
+      {
+        "order": 4,
+        "use": "District programs, marketing and member benefits (subject to coupling rule)"
+      }
+    ],
+    "member_benefits": {
+      "capital": [
+        "stable, distinctive district",
+        "foot traffic and referrals from the hub booking desk",
+        "annual uplift data",
+        "event and programming tie-ins",
+        "rotating food-counter slot (food businesses)"
+      ],
+      "social": [
+        "access to the protection fund and tenant help desk",
+        "rotating storefront slot",
+        "paid cultural and ethnographic work",
+        "seat in governance",
+        "community-owned cultural records"
+      ]
+    },
+    "member_commitments": {
+      "capital": [
+        "good-neighbor pledge: no tenant harassment",
+        "good-faith lease renewal for legacy commercial tenants",
+        "pledge payment on schedule"
+      ],
+      "social": [
+        "participation in governance",
+        "contribution of cultural or volunteer work"
+      ],
+      "enforcement": "Voluntary membership; benefits and seats withdrawn for breach. No litigation strategy."
+    },
+    "staging": [
+      {
+        "stage": 1,
+        "form": "Voluntary nonprofit partnership with signed member agreements",
+        "legislation_required": false,
+        "first_members": "MML / Nine Orchard, Porto Rico Coffee, several Allen St owners, HDFC co-ops, cultural organizations"
+      },
+      {
+        "stage": 2,
+        "form": "Pledge-backed guarantor for LESCC's Allen Street concession bid",
+        "legislation_required": false,
+        "verify_with": "Ian McDermott (concession-rule compatibility)"
+      },
+      {
+        "stage": 3,
+        "form": "Formalize as Lower East Side BID sub-district or Park Improvement District pilot with protection share built in",
+        "legislation_required": true,
+        "partners": [
+          "Lower East Side BID (Michael Bray, Expansion Committee)",
+          "Council Member, Council District 1",
+          "Manhattan Borough President"
+        ]
+      }
+    ]
+  },
+  "governance": {
+    "cultural_council": {
+      "seats": "One per community plus resident and tenant seats; residents hold a majority",
+      "powers": [
+        "Approve what is recorded, shown and sold",
+        "Approve promotional campaigns that market the neighborhood",
+        "Direct the protection fund",
+        "Trigger the promotion pause (see protection.coupling_rule)"
+      ]
+    },
+    "district_board": {
+      "board": {
+        "composition": "50% capital members, 50% social members",
+        "social_half_includes": "At least one seat each for residents, tenant/HDFC representatives, legacy businesses, and each community in the anthropology layer (including Chinese community representation)",
+        "chair": "Rotates annually between capital and social halves"
+      },
+      "decision_rules": [
+        {
+          "decision": "Protection fund use and coupling-rule pauses",
+          "rule": "Resident majority of the social half must approve"
+        },
+        {
+          "decision": "Marketing and promotional campaigns",
+          "rule": "Requires approval of both halves"
+        },
+        {
+          "decision": "Budget and pledge schedule",
+          "rule": "Requires approval of both halves"
+        },
+        {
+          "decision": "Amending governance or the protection share",
+          "rule": "Supermajority of each half separately"
+        }
+      ],
+      "anti_capture_provisions": [
+        "Voting power does not scale with pledge size",
+        "Equal governance and the protection share are fixed in founding documents before the first pledge is accepted",
+        "No single member or affiliated group may hold more than one board seat",
+        "Annual public report shows pledges, allocations, protection metrics and uplift side by side"
+      ]
+    },
+    "relationship": "The cultural council governs the archive and protection fund decisions; the district board governs pledges and the district. Social-half resident members of the board sit on the cultural council (TBD: merge into one body or keep two)."
+  },
+  "approach": {
+    "conflict_stance": "Relationship-first; no litigation",
+    "nine_orchard": "Treat as prospective anchor capital member and partner, not as an adversary in the concession process"
+  },
+  "rfp_mapping": {
+    "operator_experience": "Track record of partner organizations (Loisaida, Tenement Museum, University Settlement, Girls Club, Cooper Square CLT)",
+    "pricing": "Free and low-cost access calibrated to 21% poverty and 24% limited-English households",
+    "capital_investment": "Restoration capital plus the living archive as a lasting public asset",
+    "design": "Co-designed with communities; spaces shaped by documented practices",
+    "sustainability": "Cultural and residential continuity, measured quarterly and reported annually"
+  },
+  "metrics": {
+    "uplift": [
+      "partner referrals",
+      "local-maker sales",
+      "program attendance",
+      "restroom visits",
+      "business openings"
+    ],
+    "protection": [
+      "executed evictions (residential, commercial)",
+      "eviction filings",
+      "HPD violations",
+      "legacy-business closures",
+      "storefront vacancy",
+      "continuity fund balance and disbursements"
+    ],
+    "culture": [
+      "oral histories recorded",
+      "communities represented in programming",
+      "programming hours by language"
+    ],
+    "report_rule": "Uplift is never reported without the protection metrics alongside it."
+  },
+  "risks": [
+    {
+      "risk": "Capital capture of governance",
+      "mitigation": "Equal halves and anti-capture provisions fixed before first pledge"
+    },
+    {
+      "risk": "Pledge attrition after year one",
+      "mitigation": "Multi-year pledge agreements; annual uplift reporting; stage-3 formalization as backstop"
+    },
+    {
+      "risk": "Social contributions undervalued",
+      "mitigation": "Time-credits count toward full governance rights"
+    },
+    {
+      "risk": "District success accelerating displacement",
+      "mitigation": "Protection share first in waterfall; coupling rule"
+    },
+    {
+      "risk": "Concession rules may not accept third-party fee guarantees",
+      "mitigation": "Verify early; fallback is pledges paid to LESCC as operating revenue"
+    }
+  ],
+  "open_questions": [
+    "Is a protection share of coalition pledges compatible with the concession rules? (ask Ian McDermott)",
+    "Current CONH coverage status for Manhattan CD3 buildings",
+    "Which Chinese community organizations will hold council seats",
+    "Fund custodian: LESCC, a fiscal sponsor, or a land-trust partner",
+    "Working name for the partnership",
+    "Pledge tier amounts and protection share",
+    "Time-credit valuation method",
+    "Legal form and fiscal sponsor for stage 1",
+    "Who on the team holds the relationship with MML / Nine Orchard"
+  ]
+}
