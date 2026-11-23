@@ -17,7 +17,7 @@ interface TrendChartProps {
 
 const W = 320;
 const H = 140;
-const PAD = { l: 4, r: 40, t: 12, b: 20 };
+const PAD = { l: 4, r: 68, t: 12, b: 20 };
 
 /** Line chart: main series solid, reference faded, projection as a dashed range band. */
 export function TrendChart({ title, main, reference, projection }: TrendChartProps) {

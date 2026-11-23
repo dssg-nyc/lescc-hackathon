@@ -6,3 +6,12 @@ afterEach(() => {
   cleanup();
   window.location.hash = "";
 });
+
+// jsdom has no ResizeObserver.
+if (typeof globalThis.ResizeObserver === "undefined") {
+  globalThis.ResizeObserver = class {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  };
+}

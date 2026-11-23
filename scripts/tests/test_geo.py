@@ -23,3 +23,16 @@ def test_vectorized_distances():
 def test_assign_ring_uses_smallest_ring_that_contains_the_point():
     assert RINGS_MI == (0.5, 1.0, 2.0)
     assert list(assign_ring(np.array([0.1, 0.5, 0.7, 1.9, 2.1]))) == [0.5, 0.5, 1.0, 2.0, None]
+
+
+def test_points_within_keeps_close_valid_points_rounded():
+    from lescc_data.geo import points_within
+
+    rows = [
+        {"lat": str(SITE.lat + 0.001), "lon": str(SITE.lon)},  # ~0.07 mi
+        {"lat": str(SITE.lat + 0.1), "lon": str(SITE.lon)},  # ~7 mi
+        {"lat": "0", "lon": "0"},  # placeholder coordinates
+        {"lat": None, "lon": None},
+    ]
+    out = points_within(rows, "lat", "lon", 2.0)
+    assert out == [[round(SITE.lon, 5), round(SITE.lat + 0.001, 5)]]

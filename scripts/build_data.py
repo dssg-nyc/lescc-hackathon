@@ -24,7 +24,7 @@ import pandas as pd
 from lescc_data import fetch
 from lescc_data.acs import makeup, ring_estimates
 from lescc_data.foot import nearest_station
-from lescc_data.geo import RINGS_MI, SITE, miles_from_site
+from lescc_data.geo import RINGS_MI, SITE, miles_from_site, points_within
 from lescc_data.quiz import build_quiz
 from lescc_data.rings import ring_totals, tract_weights
 from lescc_data.trend import project_range
@@ -55,8 +55,9 @@ def envelope(status: str, caveat: str, sources: list[dict], **payload) -> dict:
     return {"generated": date.today().isoformat(), "status": status, "caveat": caveat, "sources": sources, **payload}
 
 
-def write(name: str, doc: dict) -> None:
-    (OUT_DIR / name).write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
+def write(name: str, doc: dict, compact: bool = False) -> None:
+    text = json.dumps(doc, separators=(",", ":")) if compact else json.dumps(doc, indent=2)
+    (OUT_DIR / name).write_text(text + "\n", encoding="utf-8")
     print(f"wrote {name} ({doc['status']})")
 
 
@@ -282,7 +283,7 @@ PROPOSAL = {
 def build_value(jobs_trend: list[dict], rest: dict, orgs: dict) -> dict:
     return envelope(
         "partial",
-        "Not a like-for-like comparison. Parks café and parkhouse figures are concession comparables, not food truck benchmarks. Food truck revenue is not public.",
+        "Not a like-for-like comparison. Parks café and parkhouse figures are concession comparables, not food truck benchmarks. Food truck revenue is not public. Restaurant and cultural organization counts are Manhattan only.",
         [src("Census LEHD LODES 8 WAC, sectors 71 and 72", "https://lehd.ces.census.gov/data/", "2026-11-21"),
          src("NYC DOHMH Restaurant Inspection Results (43nn-pn8j)", "https://data.cityofnewyork.us/d/43nn-pn8j", rest["pulled"]),
          src("NYC DCLA Cultural Organizations (u35m-9t32)", "https://data.cityofnewyork.us/d/u35m-9t32", orgs["pulled"]),
@@ -297,6 +298,20 @@ def build_value(jobs_trend: list[dict], rest: dict, orgs: dict) -> dict:
         proposal=PROPOSAL,
         food_truck_revenue=None,
         arts_center_revenue=None,
+    )
+
+
+def build_points(rest: dict, orgs: dict) -> dict:
+    max_ring = max(RINGS_MI)
+    return envelope(
+        "ok",
+        "Restaurants are establishments with a health inspection on record. Cultural organizations are DCLA-listed groups at their mailing address, which may differ from where they hold programs. Manhattan only: the Brooklyn part of the 2 mi ring is not shown.",
+        [src("NYC DOHMH Restaurant Inspection Results (43nn-pn8j)", "https://data.cityofnewyork.us/d/43nn-pn8j", rest["pulled"]),
+         src("NYC DCLA Cultural Organizations (u35m-9t32)", "https://data.cityofnewyork.us/d/u35m-9t32", orgs["pulled"])],
+        site=[SITE.lon, SITE.lat],
+        rings_miles=list(RINGS_MI),
+        restaurants=points_within(rest["data"], "lat", "lon", max_ring),
+        cultural_orgs=points_within(orgs["data"], "latitude", "longitude", max_ring),
     )
 
 
@@ -316,6 +331,7 @@ def main() -> None:
     write("site.json", build_site())
     write("rings.json", build_rings(args.refresh, blocks, jobs_latest))
     write("value.json", build_value(jobs_trend, rest, orgs))
+    write("points.json", build_points(rest, orgs), compact=True)
 
     for old in OLD_FILES:
         path = OUT_DIR / old

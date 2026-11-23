@@ -1,15 +1,29 @@
-import { RingMap } from "../components/RingMap";
+import { useMemo } from "react";
+import { StreetMap } from "../components/StreetMap";
 import { TrendChart } from "../components/TrendChart";
 import type { StoryData } from "../data/schema";
 import { fmtInt, fmtUsd } from "./format";
 
-export function DemographicsCard({ data }: { data: StoryData["rings.json"] }) {
+interface DemographicsCardProps {
+  data: StoryData["rings.json"];
+  points: StoryData["points.json"] | null;
+}
+
+export function DemographicsCard({ data, points }: DemographicsCardProps) {
+  const rings = useMemo(() => data.rings.map((r) => r.miles), [data.rings]);
+  const dots = useMemo(
+    () => (points ? { restaurants: points.restaurants, cultural: points.cultural_orgs } : undefined),
+    [points],
+  );
   const [main, ref] = data.area_trend;
   const first = main?.series[0];
   const latest = main?.series[main.series.length - 1];
   return (
-    <div className="split">
-      <RingMap rings={data.rings.map((r) => r.miles)} title="Rings at 0.5, 1, and 2 miles around the site" />
+    <div className="map-card">
+      {points && (
+        <StreetMap center={points.site} rings={rings} points={dots}
+          title="Map: rings at 0.5, 1, and 2 miles around the site, with restaurants and cultural organizations" />
+      )}
       <div>
         <table className="ring-table">
           <thead>
