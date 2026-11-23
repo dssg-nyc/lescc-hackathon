@@ -1,9 +1,11 @@
 # The static app reads only app/public/data/. Skip analysis inputs so
 # Vercel does not upload notebooks or the LODES extracts.
-notebooks
-data
-docs
-scripts
+# Patterns are anchored with a leading "/" so they match only at the repo
+# root. An unanchored "data" also drops app/src/data/ and app/public/data/.
+/notebooks
+/data
+/docs
+/scripts
 *.ipynb
 .DS_Store
-CLAUDE.md
+/CLAUDE.md
