@@ -32,7 +32,7 @@ export function CardBody(props: CardProps) {
     case "quiz": return <QuizCard data={get("quiz.json")} onAnswered={props.onAnswered} />;
     case "residents": return <ResidentsCard data={get("acs.json")} />;
     case "address": return <AddressCard data={get("site.json")} />;
-    case "demographics": return <DemographicsCard data={get("rings.json")} />;
+    case "demographics": return <DemographicsCard data={get("rings.json")} points={story["points.json"].ok ? story["points.json"].data : null} />;
     case "value": return <ValueCard data={get("value.json")} />;
     case "summary": return <SummaryCard story={story} vote={props.vote} onVote={props.onVote} />;
     case "results": return <ResultsCard vote={props.vote} tally={props.tally} />;

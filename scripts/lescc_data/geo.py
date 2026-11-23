@@ -44,3 +44,21 @@ def assign_ring(miles) -> list[float | None]:
     for d in np.asarray(miles, dtype=float):
         out.append(next((r for r in RINGS_MI if d <= r), None))
     return out
+
+
+def points_within(rows: list[dict], lat_key: str, lon_key: str, miles: float) -> list[list[float]]:
+    """[lon, lat] pairs (5 decimals, ~1 m) for rows within `miles` of the site.
+
+    Skips missing and 0,0 placeholder coordinates.
+    """
+    out: list[list[float]] = []
+    for r in rows:
+        try:
+            lat, lon = float(r.get(lat_key)), float(r.get(lon_key))
+        except (TypeError, ValueError):
+            continue
+        if lat == 0 or lon == 0:
+            continue
+        if float(miles_from_site(lat, lon)) <= miles:
+            out.append([round(lon, 5), round(lat, 5)])
+    return out

@@ -1,0 +1,17 @@
+@import "maplibre-gl/dist/maplibre-gl.css";
+
+.streetmap { position: relative; margin: 0; display: grid; gap: 0.5rem; }
+.streetmap-canvas {
+  width: 100%; aspect-ratio: 4 / 3; border-radius: var(--radius); overflow: hidden;
+  background: var(--color-zinc-900); opacity: 0; transition: opacity var(--dur-card) var(--ease-story);
+}
+.streetmap[data-ready] .streetmap-canvas { opacity: 1; }
+.streetmap-fallback { position: absolute; inset: 0 0 auto 0; aspect-ratio: 4 / 3; display: grid; place-items: center; }
+.streetmap:not(:has(.streetmap-canvas)) .streetmap-fallback { position: static; }
+.streetmap-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 0.375rem 0.75rem; font-size: var(--text-xs); color: var(--muted); }
+.dot { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: -0.375rem; }
+.dot-rest { background: #a1a1aa; }
+.dot-cult { background: #2fd17a; }
+.streetmap .maplibregl-ctrl-attrib { font-size: 10px; }
+@media (min-width: 900px) { .streetmap-canvas, .streetmap-fallback { aspect-ratio: 16 / 9; } }
+@media (prefers-reduced-motion: reduce) { .streetmap-canvas { transition: none; } }

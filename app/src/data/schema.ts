@@ -114,7 +114,16 @@ export const ValueSchema = Envelope.extend({
   arts_center_revenue: z.object({ low: z.number(), high: z.number(), basis: z.string() }).nullable(),
 });
 
-/** Response of the vote API (Phase 4b). */
+const LngLat = z.tuple([z.number(), z.number()]);
+
+export const PointsSchema = Envelope.extend({
+  site: LngLat,
+  rings_miles: z.array(z.number()).min(1),
+  restaurants: z.array(LngLat),
+  cultural_orgs: z.array(LngLat),
+});
+
+/** Response of the vote API (Google Sheet). */
 export const VotesSchema = z.object({
   food_truck: z.number().int().nonnegative(),
   cultural_center: z.number().int().nonnegative(),
@@ -127,6 +136,7 @@ export const SCHEMAS = {
   "site.json": SiteSchema,
   "rings.json": RingsSchema,
   "value.json": ValueSchema,
+  "points.json": PointsSchema,
 } as const;
 
 export type DataFile = keyof typeof SCHEMAS;

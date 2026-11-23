@@ -1,4 +1,4 @@
-.trend { width: 100%; height: auto; display: block; overflow: visible; }
+.trend { width: 100%; max-width: 30rem; height: auto; display: block; overflow: visible; }
 .trend-main { fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round;
   stroke-dasharray: 1; stroke-dashoffset: 1; animation: trend-draw var(--dur-count) var(--ease-story) forwards; }
 .trend-ref { fill: none; stroke: currentColor; stroke-opacity: 0.3; stroke-width: 2; }
