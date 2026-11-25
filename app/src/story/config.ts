@@ -8,6 +8,7 @@ export type CardId =
   | "quiz"
   | "residents"
   | "address"
+  | "history"
   | "demographics"
   | "value"
   | "summary"
@@ -73,6 +74,14 @@ export const CARDS: readonly Card[] = [
     caveat: "History points stay 'to research' until each has a source.",
     tone: "light",
     dataFile: "site.json",
+  },
+  {
+    id: "history",
+    label: "HISTORY",
+    headline: "Under the elevated train.",
+    caveat: "Archival photograph of the Allen Street elevated train corridor (dated 7-13-31).",
+    tone: "dark",
+    dataFile: null,
   },
   {
     id: "demographics",

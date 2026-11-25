@@ -2,9 +2,9 @@ import { describe, expect, it } from "vitest";
 import { CARDS } from "./config";
 
 describe("story config", () => {
-  it("has the nine cards in order", () => {
+  it("has the ten cards in order", () => {
     expect(CARDS.map((c) => c.id)).toEqual([
-      "intro", "crowd", "quiz", "residents", "address",
+      "intro", "crowd", "quiz", "residents", "address", "history",
       "demographics", "value", "summary", "results",
     ]);
   });

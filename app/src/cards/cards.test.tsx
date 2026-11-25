@@ -65,6 +65,13 @@ describe("cards with real data", () => {
     expect(screen.getByText(/to research/i)).toBeInTheDocument();
   });
 
+  it("history shows the archival Allen Street image and caption", () => {
+    render(<CardBody card={card("history")} {...base()} />);
+    const img = screen.getByRole("img");
+    expect(img).toHaveAttribute("src", "/assets/aistudio/image_ace336c1.png");
+    expect(screen.getByText("The former public bathroom as part of the above ground train on Allen Street")).toBeInTheDocument();
+  });
+
   it("demographics renders a table row per ring", () => {
     render(<CardBody card={card("demographics")} {...base()} />);
     const rows = screen.getAllByRole("row");

@@ -2,6 +2,7 @@ import type { DataFile, StoryData } from "../data/schema";
 import { AddressCard } from "./AddressCard";
 import { CrowdCard } from "./CrowdCard";
 import { DemographicsCard } from "./DemographicsCard";
+import { HistoryCard } from "./HistoryCard";
 import { IntroCard } from "./IntroCard";
 import { QuizCard } from "./QuizCard";
 import { ResidentsCard } from "./ResidentsCard";
@@ -38,6 +39,7 @@ export function CardBody(props: CardProps) {
     case "quiz": return <QuizCard data={get("quiz.json")} onAnswered={props.onAnswered} />;
     case "residents": return <ResidentsCard data={get("acs.json")} />;
     case "address": return <AddressCard data={get("site.json")} zips={opt("zips.json")} points={opt("points.json")} />;
+    case "history": return <HistoryCard />;
     case "demographics": return <DemographicsCard data={get("rings.json")} zips={opt("zips.json")} center={site ? [site.lon, site.lat] : [-73.990207, 40.719552]} />;
     case "value": return <ValueCard data={get("value.json")} />;
     case "summary": return <SummaryCard story={story} vote={props.vote} onVote={props.onVote} />;

@@ -78,3 +78,8 @@
 @media (prefers-reduced-motion: reduce) { .spark rect { animation: none; } }
 
 .trend-h { margin-top: 1rem; }
+
+/* history photo */
+.card-figure { margin: 0; display: grid; gap: 0.75rem; }
+.card-figure-img { width: 100%; height: auto; max-height: min(48vh, 24rem); object-fit: contain; border-radius: var(--radius); background: var(--color-black); display: block; }
+.card-figure-caption { margin: 0; font-size: var(--text-base); line-height: 1.45; }
